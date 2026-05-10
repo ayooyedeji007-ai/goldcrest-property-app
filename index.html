@@ -16,8 +16,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;font-size:14px;}
-
-/* TOPBAR */
 .topbar{background:var(--brown);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:200;box-shadow:0 3px 16px rgba(0,0,0,0.35);}
 .topbar-left{display:flex;align-items:center;gap:14px;}
 .logo-wrap{width:44px;height:44px;background:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -28,8 +26,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .topbar-right{display:flex;align-items:center;gap:10px;}
 .topbar-clock{font-size:12px;color:rgba(255,255,255,0.55);letter-spacing:1px;text-align:right;}
 .topbar-clock .time-big{font-size:16px;color:var(--gold-light);font-weight:600;display:block;}
-
-/* DRIVE STATUS */
 .drive-status{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.8px;padding:5px 12px;border-radius:20px;cursor:pointer;border:none;transition:all 0.2s;white-space:nowrap;}
 .drive-status.disconnected{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}
 .drive-status.connected{background:rgba(46,107,62,0.3);color:#7FD498;}
@@ -40,23 +36,15 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .drive-status.connected .drive-dot{background:#4CAF50;box-shadow:0 0 6px #4CAF50;}
 .drive-status.connecting .drive-dot,.drive-status.syncing .drive-dot{background:var(--gold);animation:pulse 1s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
-
-/* SYNC INDICATOR */
 .sync-bar{background:var(--blue);color:#fff;font-size:11px;font-weight:600;letter-spacing:1px;text-align:center;padding:5px;display:none;}
 .sync-bar.show{display:block;}
-
-/* TABS */
 .tab-bar{background:var(--brown-mid);display:flex;gap:2px;padding:0 24px;border-bottom:3px solid var(--gold-dark);overflow-x:auto;}
 .tab-btn{padding:11px 18px;font-family:'Source Sans 3',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.5);background:none;border:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all 0.2s;white-space:nowrap;}
 .tab-btn:hover{color:rgba(255,255,255,0.85);}
 .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
-
-/* LAYOUT */
 .main{display:flex;min-height:calc(100vh - 108px);}
 .sidebar{width:256px;flex-shrink:0;background:var(--cream-mid);border-right:1px solid var(--border);padding:20px 16px;display:flex;flex-direction:column;gap:20px;}
 .content{flex:1;padding:24px;overflow-x:auto;min-width:0;}
-
-/* SIDEBAR */
 .sidebar-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
 .prop-card{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:4px;padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:box-shadow 0.2s;}
 .prop-card:hover{box-shadow:var(--shadow);}
@@ -72,17 +60,11 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .stat-val.neutral{color:var(--blue);}
 .staff-pill{display:inline-flex;align-items:center;gap:6px;background:var(--brown);color:var(--gold-light);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600;margin:2px;}
 .staff-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);}
-
-/* PANELS */
 .panel{display:none;}
 .panel.active{display:block;}
-
-/* CARDS */
 .form-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:24px;box-shadow:var(--shadow);}
 .form-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--brown);margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--gold-pale);display:flex;align-items:center;gap:8px;}
 .form-card-title::before{content:'';display:inline-block;width:4px;height:18px;background:var(--gold);border-radius:2px;}
-
-/* FORM */
 .form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px;margin-bottom:14px;}
 .form-group{display:flex;flex-direction:column;gap:5px;}
 .form-group.full{grid-column:1/-1;}
@@ -91,12 +73,8 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .form-input,.form-select,.form-textarea{border:1px solid var(--border);border-radius:5px;padding:9px 12px;font-family:'Source Sans 3',sans-serif;font-size:13px;color:var(--text);background:var(--cream);transition:border-color 0.2s,box-shadow 0.2s;outline:none;width:100%;}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12);background:#fff;}
 .form-textarea{resize:vertical;min-height:68px;}
-
-/* VAT ROW */
 .vat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;background:var(--purple-pale);border:1px solid #c8a8e8;border-radius:6px;padding:12px 14px;}
 .vat-label-header{grid-column:1/-1;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:4px;}
-
-/* RECEIPT */
 .receipt-zone{border:2px dashed var(--border);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--cream);position:relative;overflow:hidden;}
 .receipt-zone:hover,.receipt-zone.drag-over{border-color:var(--gold);background:var(--gold-pale);}
 .receipt-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
@@ -113,8 +91,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .upload-bar{height:100%;background:var(--gold);border-radius:20px;width:0%;transition:width 0.3s;}
 .upload-label{font-size:11px;color:var(--text-mid);}
 .drive-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--blue);text-decoration:none;margin-top:6px;padding:4px 10px;background:var(--blue-pale);border-radius:12px;}
-
-/* BUTTONS */
 .btn{padding:10px 20px;border:none;border-radius:5px;font-family:'Source Sans 3',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:7px;}
 .btn-primary{background:var(--gold);color:var(--brown);}
 .btn-primary:hover{background:var(--gold-dark);color:#fff;}
@@ -130,8 +106,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .btn-edit:hover{background:var(--blue);color:#fff;}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
 .btn:disabled{opacity:0.5;cursor:not-allowed;}
-
-/* TABLE */
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:6px;}
 .filter-bar .form-input,.filter-bar .form-select{font-size:12px;padding:7px 10px;min-width:120px;}
 .filter-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);white-space:nowrap;}
@@ -154,14 +128,10 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 .thumb-btn{background:none;border:1px solid var(--border);border-radius:4px;cursor:pointer;padding:3px 8px;font-size:10px;color:var(--text-mid);transition:all 0.15s;white-space:nowrap;text-decoration:none;display:inline-block;}
 .thumb-btn:hover{background:var(--gold-pale);border-color:var(--gold);}
 .thumb-btn.has-img{border-color:var(--gold);color:var(--gold-dark);font-weight:700;}
-
-/* LIGHTBOX */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
 .lightbox.open{display:flex;}
 .lightbox img{max-width:92vw;max-height:82vh;border-radius:8px;border:3px solid var(--gold);}
 .lightbox-close{background:var(--gold);color:var(--brown);border:none;border-radius:20px;padding:8px 24px;font-weight:700;font-size:13px;cursor:pointer;}
-
-/* SUMMARY */
 .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-bottom:24px;}
 .sum-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px;box-shadow:var(--shadow);border-top:4px solid var(--border);}
 .sum-card.income{border-top-color:var(--green);}
@@ -177,8 +147,6 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 .sum-card.hours .sum-card-val{color:var(--blue);}
 .sum-card.vat .sum-card-val{color:var(--purple);}
 .sum-card-sub{font-size:11px;color:var(--text-light);margin-top:4px;}
-
-/* VAT PANEL */
 .vat-quarter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px;}
 .vat-q-card{background:#fff;border:1px solid #c8a8e8;border-radius:8px;padding:16px;box-shadow:var(--shadow);}
 .vat-q-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-bottom:10px;}
@@ -186,40 +154,26 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 .vat-q-row:last-child{border-bottom:none;padding-top:8px;}
 .vat-q-row .vl{color:var(--text-mid);}
 .vat-q-row .vv{color:var(--purple);font-weight:600;}
-
-/* TIMER */
 .timer-display{text-align:center;padding:24px 0 16px;}
 .timer-digits{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:var(--brown);letter-spacing:4px;line-height:1;}
 .timer-digits.running{color:var(--gold-dark);}
 .timer-meta{font-size:12px;color:var(--text-light);margin-top:10px;letter-spacing:1px;}
 .timer-fee{font-size:20px;font-weight:700;color:var(--green);margin-top:8px;}
-
-/* STAFF */
 .staff-list{display:flex;flex-direction:column;gap:8px;}
 .staff-row{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px 14px;gap:10px;}
 .staff-info{display:flex;flex-direction:column;flex:1;}
 .staff-name{font-weight:700;font-size:13px;color:var(--brown);}
 .staff-role{font-size:11px;color:var(--text-light);}
 .staff-actions{display:flex;gap:6px;flex-shrink:0;}
-
-/* EDIT MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
 .modal-box{background:#fff;border-radius:10px;padding:28px;width:90%;max-width:400px;box-shadow:var(--shadow-lg);}
 .modal-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--brown);margin-bottom:18px;}
-
-/* INFO / WARN */
-.info-box{background:var(--blue-pale);border:1px solid #b0c8e8;border-radius:6px;padding:12px 16px;font-size:12px;color:var(--blue);margin-bottom:16px;line-height:1.6;}
 .warn-box{background:#FFF8E1;border:1px solid #FFD54F;border-radius:6px;padding:12px 16px;font-size:12px;color:#7A5800;margin-bottom:16px;line-height:1.6;}
-
-/* EMPTY */
 .empty-state{text-align:center;padding:40px 24px;color:var(--text-light);}
 .empty-state .icon{font-size:32px;margin-bottom:10px;}
-
-/* TOAST */
 #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--brown);color:var(--gold-light);padding:10px 24px;border-radius:30px;font-size:12px;font-weight:600;letter-spacing:1px;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:opacity 0.3s;z-index:999;max-width:90vw;text-align:center;}
 #toast.show{opacity:1;}
-
 @media(max-width:720px){
   .main{flex-direction:column;}
   .sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border);}
@@ -313,7 +267,6 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       <div id="drive-warning" class="warn-box" style="display:none;">
         ⚠️ <strong>Google Drive not connected.</strong> Data is stored locally on this device only. Connect Drive to sync entries, staff and receipts across all devices.
       </div>
-
       <div class="form-card">
         <div class="form-card-title">New Entry</div>
         <div class="form-grid">
@@ -344,12 +297,28 @@ tbody td{padding:9px 12px;vertical-align:middle;}
           <div class="form-group">
             <label class="form-label">Category</label>
             <select class="form-select" id="f-cat">
-              <option>Rent Received</option><option>Maintenance</option><option>Repairs</option>
-              <option>Inspection</option><option>Contractor</option><option>Insurance</option>
-              <option>Utilities</option><option>Mortgage / Finance</option><option>Management Fee</option>
-              <option>Legal / Professional</option><option>Letting / Advertising</option>
-              <option>Council Tax</option><option>Ground Rent / Service Charge</option>
-              <option>Cleaning</option><option>Administration</option><option>Other</option>
+              <option>Maintenance</option>
+              <option>Repairs</option>
+              <option>Inspection</option>
+              <option>Contractor</option>
+              <option>Insurance</option>
+              <option>Utilities</option>
+              <option>Mortgage</option>
+              <option>Finance</option>
+              <option>Lease Payment</option>
+              <option>Management Fee</option>
+              <option>Legal / Professional</option>
+              <option>Letting / Advertising</option>
+              <option>Council Tax</option>
+              <option>Ground Rent</option>
+              <option>Service Charge</option>
+              <option>Cleaning</option>
+              <option>Administration</option>
+              <option>Rent</option>
+              <option>Rental Income</option>
+              <option>Motor Expenses</option>
+              <option>Sundry Expenses</option>
+              <option>Other</option>
             </select>
           </div>
           <div class="form-group">
@@ -483,9 +452,30 @@ tbody td{padding:9px 12px;vertical-align:middle;}
             </div>
             <div class="form-group">
               <label class="form-label">Category</label>
+              <!-- TIMER CATEGORY LIST — keep in sync with main list above -->
               <select class="form-select" id="t-cat">
-                <option>Administration</option><option>Inspection</option><option>Maintenance</option>
-                <option>Management Fee</option><option>Legal / Professional</option><option>Other</option>
+                <option>Maintenance</option>
+                <option>Repairs</option>
+                <option>Inspection</option>
+                <option>Contractor</option>
+                <option>Insurance</option>
+                <option>Utilities</option>
+                <option>Mortgage</option>
+                <option>Finance</option>
+                <option>Lease Payment</option>
+                <option>Management Fee</option>
+                <option>Legal / Professional</option>
+                <option>Letting / Advertising</option>
+                <option>Council Tax</option>
+                <option>Ground Rent</option>
+                <option>Service Charge</option>
+                <option>Cleaning</option>
+                <option>Administration</option>
+                <option>Rent</option>
+                <option>Rental Income</option>
+                <option>Motor Expenses</option>
+                <option>Sundry Expenses</option>
+                <option>Other</option>
               </select>
             </div>
             <div class="form-group full">
@@ -598,13 +588,11 @@ tbody td{padding:9px 12px;vertical-align:middle;}
   </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img" src="" alt="Receipt">
   <button class="lightbox-close" onclick="closeLightbox()">Close</button>
 </div>
 
-<!-- EDIT STAFF MODAL -->
 <div class="modal-overlay" id="edit-modal">
   <div class="modal-box">
     <div class="modal-title">Edit Staff Member</div>
@@ -628,18 +616,12 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
-/* ═══════════════ CONFIG ═══════════════ */
-const GDRIVE_CLIENT_ID = '737294901316-164o32a3vvmc569ttt9g3v0l03gi4gh3.apps.googleusercontent.com';
-const GDRIVE_FOLDER_ID = '1RLC85m_YTAd7zcdATmoWcFSggTLz2eLv';
-const GDRIVE_SCOPE     = 'https://www.googleapis.com/auth/drive.file';
-const DATA_FILENAME    = 'goldcrest_data.json';
-
-/* ═══════════════ STATE ═══════════════ */
-let entries=[], staff=[], nextId=1, activeProp='ALL';
-let driveToken=null, dataFileId=null, pendingFile=null;
-let saveTimer=null;
-
-/* ═══════════════ LOCAL STORAGE ═══════════════ */
+const GDRIVE_CLIENT_ID='737294901316-164o32a3vvmc569ttt9g3v0l03gi4gh3.apps.googleusercontent.com';
+const GDRIVE_FOLDER_ID='1RLC85m_YTAd7zcdATmoWcFSggTLz2eLv';
+const GDRIVE_SCOPE='https://www.googleapis.com/auth/drive.file';
+const DATA_FILENAME='goldcrest_data.json';
+let entries=[],staff=[],nextId=1,activeProp='ALL';
+let driveToken=null,dataFileId=null,pendingFile=null,saveTimer=null;
 const SK_E='gc4_entries',SK_S='gc4_staff',SK_ID='gc4_nid',SK_TOK='gc4_tok',SK_FID='gc4_fid';
 
 function saveLocal(){
@@ -648,10 +630,9 @@ function saveLocal(){
   localStorage.setItem(SK_ID,nextId);
   if(dataFileId) localStorage.setItem(SK_FID,dataFileId);
 }
-
 function loadLocal(){
-  try{ entries=JSON.parse(localStorage.getItem(SK_E))||[]; }catch{ entries=[]; }
-  try{ staff=JSON.parse(localStorage.getItem(SK_S))||[]; }catch{ staff=[]; }
+  try{entries=JSON.parse(localStorage.getItem(SK_E))||[];}catch{entries=[];}
+  try{staff=JSON.parse(localStorage.getItem(SK_S))||[];}catch{staff=[];}
   nextId=parseInt(localStorage.getItem(SK_ID))||1;
   driveToken=localStorage.getItem(SK_TOK)||null;
   dataFileId=localStorage.getItem(SK_FID)||null;
@@ -661,126 +642,88 @@ function loadLocal(){
   }
 }
 
-/* ═══════════════ DRIVE AUTH ═══════════════ */
 function handleDriveAuth(){
-  if(driveToken){ signOutDrive(); return; }
+  if(driveToken){signOutDrive();return;}
   setDriveStatus('connecting','Connecting...');
   const client=google.accounts.oauth2.initTokenClient({
-    client_id:GDRIVE_CLIENT_ID,
-    scope:GDRIVE_SCOPE,
+    client_id:GDRIVE_CLIENT_ID,scope:GDRIVE_SCOPE,
     callback:async(resp)=>{
-      if(resp.error){ setDriveStatus('disconnected','Connect Drive'); toast('Drive auth failed: '+resp.error); return; }
+      if(resp.error){setDriveStatus('disconnected','Connect Drive');toast('Drive auth failed: '+resp.error);return;}
       driveToken=resp.access_token;
       localStorage.setItem(SK_TOK,driveToken);
       setDriveStatus('connected','Drive Connected');
       document.getElementById('sync-btn').style.display='inline-flex';
       document.getElementById('drive-warning').style.display='none';
-      toast('Google Drive connected — syncing data...');
+      toast('Google Drive connected — syncing...');
       await syncFromDrive();
       updateDriveSidebar();
     }
   });
   client.requestAccessToken();
 }
-
 function signOutDrive(){
-  if(!confirm('Disconnect Google Drive?')) return;
-  if(driveToken) google.accounts.oauth2.revoke(driveToken,()=>{});
-  driveToken=null; dataFileId=null;
-  localStorage.removeItem(SK_TOK); localStorage.removeItem(SK_FID);
+  if(!confirm('Disconnect Google Drive?'))return;
+  if(driveToken)google.accounts.oauth2.revoke(driveToken,()=>{});
+  driveToken=null;dataFileId=null;
+  localStorage.removeItem(SK_TOK);localStorage.removeItem(SK_FID);
   setDriveStatus('disconnected','Connect Drive');
   document.getElementById('sync-btn').style.display='none';
   document.getElementById('drive-warning').style.display='block';
-  updateDriveSidebar(); toast('Disconnected from Drive');
+  updateDriveSidebar();toast('Disconnected from Drive');
 }
-
 function setDriveStatus(state,label){
-  const btn=document.getElementById('drive-btn');
-  btn.className='drive-status '+state;
+  document.getElementById('drive-btn').className='drive-status '+state;
   document.getElementById('drive-label').textContent=label;
 }
-
 function updateDriveSidebar(){
   const el=document.getElementById('drive-sidebar-info');
   if(driveToken){
     const t=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-    el.innerHTML=`<span style="color:var(--green);font-weight:600;">✓ Connected</span><br>
-    Last sync: ${t}<br>
-    <a href="https://drive.google.com/drive/folders/${GDRIVE_FOLDER_ID}" target="_blank" style="color:var(--blue);">Open Drive folder ↗</a>`;
+    el.innerHTML=`<span style="color:var(--green);font-weight:600;">✓ Connected</span><br>Last sync: ${t}<br><a href="https://drive.google.com/drive/folders/${GDRIVE_FOLDER_ID}" target="_blank" style="color:var(--blue);">Open Drive folder ↗</a>`;
   } else {
-    el.innerHTML='Not connected.<br>Tap "Connect Drive" to sync data across all devices.';
+    el.innerHTML='Not connected.<br>Tap "Connect Drive" to sync across all devices.';
   }
 }
 
-/* ═══════════════ DRIVE DATA SYNC ═══════════════ */
 async function findDataFile(){
-  if(!driveToken) return null;
+  if(!driveToken)return null;
   try{
-    const res=await fetch(`https://www.googleapis.com/drive/v3/files?q=name='${DATA_FILENAME}'+and+'${GDRIVE_FOLDER_ID}'+in+parents+and+trashed=false&fields=files(id,name,modifiedTime)`,{
-      headers:{'Authorization':'Bearer '+driveToken}
-    });
-    if(res.status===401){ handleTokenExpiry(); return null; }
-    const data=await res.json();
-    return data.files&&data.files.length>0 ? data.files[0].id : null;
-  } catch(e){ return null; }
+    const res=await fetch(`https://www.googleapis.com/drive/v3/files?q=name='${DATA_FILENAME}'+and+'${GDRIVE_FOLDER_ID}'+in+parents+and+trashed=false&fields=files(id,name)`,{headers:{'Authorization':'Bearer '+driveToken}});
+    if(res.status===401){handleTokenExpiry();return null;}
+    const d=await res.json();
+    return d.files&&d.files.length>0?d.files[0].id:null;
+  }catch{return null;}
 }
-
 async function syncFromDrive(){
-  if(!driveToken) return;
-  showSyncBar();
-  setDriveStatus('syncing','Syncing...');
-
+  if(!driveToken)return;
+  showSyncBar();setDriveStatus('syncing','Syncing...');
   try{
-    // Find or confirm data file
     const fid=dataFileId||await findDataFile();
-
     if(fid){
-      dataFileId=fid;
-      localStorage.setItem(SK_FID,fid);
-      // Download data
-      const res=await fetch(`https://www.googleapis.com/drive/v3/files/${fid}?alt=media`,{
-        headers:{'Authorization':'Bearer '+driveToken}
-      });
-      if(res.status===401){ handleTokenExpiry(); return; }
+      dataFileId=fid;localStorage.setItem(SK_FID,fid);
+      const res=await fetch(`https://www.googleapis.com/drive/v3/files/${fid}?alt=media`,{headers:{'Authorization':'Bearer '+driveToken}});
+      if(res.status===401){handleTokenExpiry();return;}
       if(res.ok){
-        const data=await res.json();
-        if(data.entries) entries=data.entries;
-        if(data.staff) staff=data.staff;
-        if(data.nextId) nextId=data.nextId;
-        saveLocal();
-        refreshAllUI();
-        toast('Data synced from Drive');
+        const d=await res.json();
+        if(d.entries)entries=d.entries;
+        if(d.staff)staff=d.staff;
+        if(d.nextId)nextId=d.nextId;
+        saveLocal();refreshAllUI();toast('Data synced from Drive');
       }
     } else {
-      // No file yet — push local data up
       await saveToDrive();
     }
-  } catch(e){
-    toast('Sync error: '+e.message);
-  }
-
-  setDriveStatus('connected','Drive Connected');
-  hideSyncBar();
-  updateDriveSidebar();
+  }catch(e){toast('Sync error: '+e.message);}
+  setDriveStatus('connected','Drive Connected');hideSyncBar();updateDriveSidebar();
 }
-
 async function saveToDrive(){
-  if(!driveToken) return;
-
+  if(!driveToken)return;
   const payload=JSON.stringify({entries,staff,nextId,savedAt:new Date().toISOString()});
   const blob=new Blob([payload],{type:'application/json'});
-
   if(dataFileId){
-    // Update existing file
-    const res=await fetch(`https://www.googleapis.com/upload/drive/v3/files/${dataFileId}?uploadType=media`,{
-      method:'PATCH',
-      headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},
-      body:blob
-    });
-    if(res.status===401){ handleTokenExpiry(); return; }
-    if(!res.ok){ const e=await res.json(); console.error('Drive save error',e); }
+    const res=await fetch(`https://www.googleapis.com/upload/drive/v3/files/${dataFileId}?uploadType=media`,{method:'PATCH',headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},body:blob});
+    if(res.status===401)handleTokenExpiry();
   } else {
-    // Create new file
     const meta={name:DATA_FILENAME,parents:[GDRIVE_FOLDER_ID],mimeType:'application/json'};
     const boundary='gc_b_'+Date.now();
     const enc=new TextEncoder();
@@ -788,47 +731,24 @@ async function saveToDrive(){
     const dataPart=enc.encode(payload);
     const closing=enc.encode(`\r\n--${boundary}--`);
     const body=new Uint8Array(metaPart.byteLength+dataPart.byteLength+closing.byteLength);
-    body.set(metaPart,0); body.set(dataPart,metaPart.byteLength); body.set(closing,metaPart.byteLength+dataPart.byteLength);
-
-    const res=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',{
-      method:'POST',
-      headers:{'Authorization':'Bearer '+driveToken,'Content-Type':`multipart/related; boundary=${boundary}`},
-      body
-    });
-    if(res.status===401){ handleTokenExpiry(); return; }
-    if(res.ok){
-      const d=await res.json();
-      dataFileId=d.id;
-      localStorage.setItem(SK_FID,dataFileId);
-    }
+    body.set(metaPart,0);body.set(dataPart,metaPart.byteLength);body.set(closing,metaPart.byteLength+dataPart.byteLength);
+    const res=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',{method:'POST',headers:{'Authorization':'Bearer '+driveToken,'Content-Type':`multipart/related; boundary=${boundary}`},body});
+    if(res.status===401){handleTokenExpiry();return;}
+    if(res.ok){const d=await res.json();dataFileId=d.id;localStorage.setItem(SK_FID,dataFileId);}
   }
 }
-
-// Debounced save -- waits 2s after last change before writing to Drive
 function scheduleDriveSave(){
-  saveLocal();
-  if(!driveToken) return;
+  saveLocal();if(!driveToken)return;
   clearTimeout(saveTimer);
   setDriveStatus('syncing','Saving...');
-  saveTimer=setTimeout(async()=>{
-    await saveToDrive();
-    setDriveStatus('connected','Drive Connected');
-    updateDriveSidebar();
-  },2000);
+  saveTimer=setTimeout(async()=>{await saveToDrive();setDriveStatus('connected','Drive Connected');updateDriveSidebar();},2000);
 }
+function handleTokenExpiry(){driveToken=null;localStorage.removeItem(SK_TOK);setDriveStatus('disconnected','Connect Drive');toast('Drive session expired — please reconnect');}
+function showSyncBar(){document.getElementById('sync-bar').classList.add('show');}
+function hideSyncBar(){document.getElementById('sync-bar').classList.remove('show');}
 
-function handleTokenExpiry(){
-  driveToken=null; localStorage.removeItem(SK_TOK);
-  setDriveStatus('disconnected','Connect Drive');
-  toast('Drive session expired — please reconnect');
-}
-
-function showSyncBar(){ document.getElementById('sync-bar').classList.add('show'); }
-function hideSyncBar(){ document.getElementById('sync-bar').classList.remove('show'); }
-
-/* ═══════════════ RECEIPT UPLOAD ═══════════════ */
 async function uploadToDrive(file,filename){
-  if(!driveToken) return null;
+  if(!driveToken)return null;
   showUploadProgress(0,'Preparing...');
   const meta={name:filename,parents:[GDRIVE_FOLDER_ID],mimeType:file.type||'image/jpeg'};
   const boundary='gc_r_'+Date.now();
@@ -837,71 +757,55 @@ async function uploadToDrive(file,filename){
   const metaPart=enc.encode(`--${boundary}\r\nContent-Type: application/json\r\n\r\n${JSON.stringify(meta)}\r\n--${boundary}\r\nContent-Type: ${file.type||'image/jpeg'}\r\n\r\n`);
   const closing=enc.encode(`\r\n--${boundary}--`);
   const body=new Uint8Array(metaPart.byteLength+arrayBuf.byteLength+closing.byteLength);
-  body.set(metaPart,0); body.set(new Uint8Array(arrayBuf),metaPart.byteLength); body.set(closing,metaPart.byteLength+arrayBuf.byteLength);
+  body.set(metaPart,0);body.set(new Uint8Array(arrayBuf),metaPart.byteLength);body.set(closing,metaPart.byteLength+arrayBuf.byteLength);
   showUploadProgress(40,'Uploading...');
   try{
-    const res=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name',{
-      method:'POST',
-      headers:{'Authorization':'Bearer '+driveToken,'Content-Type':`multipart/related; boundary=${boundary}`},
-      body
-    });
-    if(!res.ok){ if(res.status===401) handleTokenExpiry(); hideUploadProgress(); return null; }
+    const res=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name',{method:'POST',headers:{'Authorization':'Bearer '+driveToken,'Content-Type':`multipart/related; boundary=${boundary}`},body});
+    if(!res.ok){if(res.status===401)handleTokenExpiry();hideUploadProgress();return null;}
     const d=await res.json();
     showUploadProgress(90,'Finalising...');
-    await fetch(`https://www.googleapis.com/drive/v3/files/${d.id}/permissions`,{
-      method:'POST',
-      headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},
-      body:JSON.stringify({role:'reader',type:'anyone'})
-    });
-    showUploadProgress(100,'Done ✓');
-    setTimeout(hideUploadProgress,1200);
+    await fetch(`https://www.googleapis.com/drive/v3/files/${d.id}/permissions`,{method:'POST',headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},body:JSON.stringify({role:'reader',type:'anyone'})});
+    showUploadProgress(100,'Done ✓');setTimeout(hideUploadProgress,1200);
     return{fileId:d.id,fileName:d.name,viewLink:`https://drive.google.com/file/d/${d.id}/view`,thumbLink:`https://drive.google.com/thumbnail?id=${d.id}&sz=w400`};
-  } catch(e){ hideUploadProgress(); return null; }
+  }catch{hideUploadProgress();return null;}
 }
-
 function showUploadProgress(pct,label){
   document.getElementById('upload-progress').style.display='block';
   document.getElementById('upload-bar').style.width=pct+'%';
   document.getElementById('upload-label').textContent=label;
 }
-function hideUploadProgress(){
-  document.getElementById('upload-progress').style.display='none';
-  document.getElementById('upload-bar').style.width='0%';
-}
+function hideUploadProgress(){document.getElementById('upload-progress').style.display='none';document.getElementById('upload-bar').style.width='0%';}
 
-/* ═══════════════ FILE SELECT / DROP ═══════════════ */
 function handleFileSelect(evt){
-  const file=evt.target.files[0]; if(!file) return;
-  if(file.size>10*1024*1024){ toast('File too large — max 10MB'); return; }
+  const file=evt.target.files[0];if(!file)return;
+  if(file.size>10*1024*1024){toast('File too large — max 10MB');return;}
   pendingFile=file;
   const reader=new FileReader();
-  reader.onload=e=>showReceiptPreview('receipt-preview-form',e.target.result,()=>{ pendingFile=null; clearReceiptPreview('receipt-preview-form'); document.getElementById('drive-file-link').innerHTML=''; });
-  reader.readAsDataURL(file);
-  evt.target.value='';
+  reader.onload=e=>showReceiptPreview('receipt-preview-form',e.target.result,()=>{pendingFile=null;clearReceiptPreview('receipt-preview-form');document.getElementById('drive-file-link').innerHTML='';});
+  reader.readAsDataURL(file);evt.target.value='';
 }
 function showReceiptPreview(cId,src,onRemove){
-  const el=document.getElementById(cId); el.innerHTML='';
-  const wrap=document.createElement('div'); wrap.className='receipt-preview';
-  const img=document.createElement('img'); img.src=src;
-  const btn=document.createElement('button'); btn.className='remove-img'; btn.textContent='✕'; btn.onclick=onRemove;
-  wrap.appendChild(img); wrap.appendChild(btn); el.appendChild(wrap);
+  const el=document.getElementById(cId);el.innerHTML='';
+  const wrap=document.createElement('div');wrap.className='receipt-preview';
+  const img=document.createElement('img');img.src=src;
+  const btn=document.createElement('button');btn.className='remove-img';btn.textContent='✕';btn.onclick=onRemove;
+  wrap.appendChild(img);wrap.appendChild(btn);el.appendChild(wrap);
 }
-function clearReceiptPreview(cId){ document.getElementById(cId).innerHTML=''; }
-function onDragOver(e){ e.preventDefault(); document.getElementById('receipt-zone').classList.add('drag-over'); }
-function onDragLeave(){ document.getElementById('receipt-zone').classList.remove('drag-over'); }
+function clearReceiptPreview(cId){document.getElementById(cId).innerHTML='';}
+function onDragOver(e){e.preventDefault();document.getElementById('receipt-zone').classList.add('drag-over');}
+function onDragLeave(){document.getElementById('receipt-zone').classList.remove('drag-over');}
 function onDrop(e){
-  e.preventDefault(); onDragLeave();
-  const file=e.dataTransfer.files[0]; if(!file) return;
-  if(file.size>10*1024*1024){ toast('File too large'); return; }
+  e.preventDefault();onDragLeave();
+  const file=e.dataTransfer.files[0];if(!file)return;
+  if(file.size>10*1024*1024){toast('File too large');return;}
   pendingFile=file;
   const reader=new FileReader();
-  reader.onload=ev=>showReceiptPreview('receipt-preview-form',ev.target.result,()=>{ pendingFile=null; clearReceiptPreview('receipt-preview-form'); });
+  reader.onload=ev=>showReceiptPreview('receipt-preview-form',ev.target.result,()=>{pendingFile=null;clearReceiptPreview('receipt-preview-form');});
   reader.readAsDataURL(file);
 }
-function openLightbox(src){ document.getElementById('lightbox-img').src=src; document.getElementById('lightbox').classList.add('open'); }
-function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
+function openLightbox(src){document.getElementById('lightbox-img').src=src;document.getElementById('lightbox').classList.add('open');}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
 
-/* ═══════════════ VAT CALC ═══════════════ */
 function onTypeChange(){
   const t=document.getElementById('f-type').value;
   document.getElementById('vat-section').style.display=t==='Expense'?'block':'none';
@@ -909,44 +813,40 @@ function onTypeChange(){
 }
 function autoCalcVat(){
   const rate=document.getElementById('f-vatrate').value;
-  if(rate==='manual'||rate==='exempt') return;
-  const gross=parseFloat(document.getElementById('f-amount').value)||0; if(!gross) return;
+  if(rate==='manual'||rate==='exempt')return;
+  const gross=parseFloat(document.getElementById('f-amount').value)||0;if(!gross)return;
   const r=parseFloat(rate)/100;
   document.getElementById('f-net').value=(gross/(1+r)).toFixed(2);
   document.getElementById('f-vat').value=(gross-gross/(1+r)).toFixed(2);
 }
 function onNetChange(){
-  const rate=document.getElementById('f-vatrate').value; if(rate==='manual'||rate==='exempt') return;
-  const net=parseFloat(document.getElementById('f-net').value)||0;
-  const r=parseFloat(rate)/100;
+  const rate=document.getElementById('f-vatrate').value;if(rate==='manual'||rate==='exempt')return;
+  const net=parseFloat(document.getElementById('f-net').value)||0;const r=parseFloat(rate)/100;
   document.getElementById('f-vat').value=(net*r).toFixed(2);
   document.getElementById('f-amount').value=(net+net*r).toFixed(2);
 }
-function getVatLabel(v){ return{'20':'20%','5':'5%','0':'0%','exempt':'Exempt','manual':'Manual'}[v]||v; }
+function getVatLabel(v){return{'20':'20%','5':'5%','0':'0%','exempt':'Exempt','manual':'Manual'}[v]||v;}
 
-/* ═══════════════ ADD ENTRY ═══════════════ */
-function today(){ return new Date().toISOString().slice(0,10); }
+function today(){return new Date().toISOString().slice(0,10);}
 
 async function addEntry(){
   const date=document.getElementById('f-date').value;
   const desc=document.getElementById('f-desc').value.trim();
-  if(!date){ toast('Select a date'); return; }
-  if(!desc){ toast('Add a description'); return; }
+  if(!date){toast('Select a date');return;}
+  if(!desc){toast('Add a description');return;}
   const type=document.getElementById('f-type').value;
   const btn=document.getElementById('save-btn');
-  btn.disabled=true; btn.textContent='Saving...';
-
+  btn.disabled=true;btn.textContent='Saving...';
   let receiptData=null;
   if(pendingFile){
     if(driveToken){
       const stamp=new Date().toISOString().slice(0,19).replace(/[T:]/g,'-');
       receiptData=await uploadToDrive(pendingFile,`Receipt_${stamp}_${pendingFile.name}`);
-      if(receiptData) document.getElementById('drive-file-link').innerHTML=`<a href="${receiptData.viewLink}" target="_blank" class="drive-link">☁️ Saved: ${receiptData.fileName}</a>`;
+      if(receiptData)document.getElementById('drive-file-link').innerHTML=`<a href="${receiptData.viewLink}" target="_blank" class="drive-link">☁️ Saved: ${receiptData.fileName}</a>`;
     } else {
       receiptData=await fileToBase64(pendingFile);
     }
   }
-
   entries.unshift({
     id:nextId++,date,
     staff:document.getElementById('f-staff').value,
@@ -964,19 +864,11 @@ async function addEntry(){
     receiptViewLink:receiptData?.viewLink||null,
     receiptLocal:(typeof receiptData==='string')?receiptData:null
   });
-
-  scheduleDriveSave();
-  pendingFile=null;
-  clearForm();
-  renderLog(); updateSidebar();
-  btn.disabled=false; btn.textContent='+ Add Entry';
+  scheduleDriveSave();pendingFile=null;clearForm();renderLog();updateSidebar();
+  btn.disabled=false;btn.textContent='+ Add Entry';
   toast('Entry saved'+(receiptData?.fileId?' — receipt synced to Drive':receiptData?' — receipt saved locally':''));
 }
-
-function fileToBase64(file){
-  return new Promise(res=>{ const r=new FileReader(); r.onload=e=>res(e.target.result); r.readAsDataURL(file); });
-}
-
+function fileToBase64(file){return new Promise(res=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.readAsDataURL(file);});}
 function clearForm(){
   ['f-amount','f-net','f-vat','f-mins','f-evref','f-desc'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('f-date').value=today();
@@ -984,35 +876,33 @@ function clearForm(){
   document.getElementById('f-vatrate').value='20';
   document.getElementById('f-amount').style.borderColor='';
   document.getElementById('vat-section').style.display='block';
-  pendingFile=null; clearReceiptPreview('receipt-preview-form');
-  document.getElementById('drive-file-link').innerHTML=''; hideUploadProgress();
+  pendingFile=null;clearReceiptPreview('receipt-preview-form');
+  document.getElementById('drive-file-link').innerHTML='';hideUploadProgress();
 }
-
 function deleteEntry(id){
-  if(!confirm('Delete this entry?')) return;
+  if(!confirm('Delete this entry?'))return;
   entries=entries.filter(e=>e.id!==id);
-  scheduleDriveSave(); renderLog(); updateSidebar(); toast('Deleted');
+  scheduleDriveSave();renderLog();updateSidebar();toast('Deleted');
 }
 
-/* ═══════════════ RENDER LOG ═══════════════ */
 function renderLog(){
   const month=document.getElementById('fil-month').value;
   const fType=document.getElementById('fil-type').value;
   const fCat=document.getElementById('fil-cat').value;
   let fil=entries.filter(e=>{
-    if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp)) return false;
-    if(month&&!e.date.startsWith(month)) return false;
-    if(fType&&e.type!==fType) return false;
-    if(fCat&&e.cat!==fCat) return false;
+    if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp))return false;
+    if(month&&!e.date.startsWith(month))return false;
+    if(fType&&e.type!==fType)return false;
+    if(fCat&&e.cat!==fCat)return false;
     return true;
   });
   document.getElementById('drive-warning').style.display=driveToken?'none':'block';
   const tb=document.getElementById('log-body');
-  if(!fil.length){ tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">📋</div><p>No entries found.</p></div></td></tr>`; return; }
+  if(!fil.length){tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">📋</div><p>No entries found.</p></div></td></tr>`;return;}
   tb.innerHTML=fil.map(e=>{
     let rc='<span style="color:var(--text-light);font-size:11px;">—</span>';
-    if(e.receiptViewLink) rc=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️ Drive</a>`;
-    else if(e.receiptLocal) rc=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷 View</button>`;
+    if(e.receiptViewLink)rc=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️ Drive</a>`;
+    else if(e.receiptLocal)rc=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷 View</button>`;
     const vd=e.type==='Expense'&&e.vatAmt>0?`<span class="badge badge-vat">£${e.vatAmt.toFixed(2)}</span>`:`<span style="color:var(--text-light);font-size:11px;">${e.type==='Expense'?'Exempt':'—'}</span>`;
     return`<tr>
       <td style="white-space:nowrap;">${fmtDate(e.date)}</td>
@@ -1029,23 +919,22 @@ function renderLog(){
   }).join('');
   populateCatFilter();
 }
-
 function populateCatFilter(){
-  const sel=document.getElementById('fil-cat'); const cur=sel.value;
+  const sel=document.getElementById('fil-cat');const cur=sel.value;
   const cats=[...new Set(entries.map(e=>e.cat))].sort();
   sel.innerHTML='<option value="">All Categories</option>'+cats.map(c=>`<option value="${c}"${c===cur?' selected':''}>${c}</option>`).join('');
 }
-function clearFilters(){ ['fil-month','fil-type','fil-cat'].forEach(id=>document.getElementById(id).value=''); renderLog(); }
+function clearFilters(){['fil-month','fil-type','fil-cat'].forEach(id=>document.getElementById(id).value='');renderLog();}
 function filterProp(prop){
   activeProp=prop;
   document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('active'));
   const map={'ALL':'prop-all','160 Wycliffe':'prop-1','14 Calder':'prop-2'};
-  if(map[prop]) document.getElementById(map[prop]).classList.add('active');
-  renderLog(); updateSidebar();
+  if(map[prop])document.getElementById(map[prop]).classList.add('active');
+  renderLog();updateSidebar();
 }
 function updateSidebar(){
   const month=new Date().toISOString().slice(0,7);
-  const fil=entries.filter(e=>{ if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp)) return false; return e.date.startsWith(month); });
+  const fil=entries.filter(e=>{if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp))return false;return e.date.startsWith(month);});
   const inc=fil.filter(e=>e.type==='Income').reduce((a,e)=>a+(e.amount||0),0);
   const exp=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.amount||0),0);
   const vat=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -1058,16 +947,15 @@ function updateSidebar(){
   document.getElementById('sb-vat').textContent='£'+vat.toFixed(2);
 }
 
-/* ═══════════════ VAT PANEL ═══════════════ */
-function quarterOf(d){ const m=parseInt(d.slice(5,7)); return m<=3?'Q1':m<=6?'Q2':m<=9?'Q3':'Q4'; }
-function quarterMonths(q){ return{Q1:[1,2,3],Q2:[4,5,6],Q3:[7,8,9],Q4:[10,11,12]}[q]; }
+function quarterOf(d){const m=parseInt(d.slice(5,7));return m<=3?'Q1':m<=6?'Q2':m<=9?'Q3':'Q4';}
+function quarterMonths(q){return{Q1:[1,2,3],Q2:[4,5,6],Q3:[7,8,9],Q4:[10,11,12]}[q];}
 function renderVat(){
   const year=parseInt(document.getElementById('vat-year').value)||new Date().getFullYear();
   const fp=document.getElementById('vat-prop').value;
   const ve=entries.filter(e=>e.date.startsWith(String(year))&&(!fp||e.prop.startsWith(fp))&&e.type==='Expense'&&(e.vatAmt||0)>0);
   const ends={Q1:'31 Mar',Q2:'30 Jun',Q3:'30 Sep',Q4:'31 Dec'};
   document.getElementById('vat-quarter-cards').innerHTML=['Q1','Q2','Q3','Q4'].map(q=>{
-    const ms=quarterMonths(q); const qe=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7))));
+    const ms=quarterMonths(q);const qe=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7))));
     const gross=qe.reduce((a,e)=>a+(e.amount||0),0);
     const net=qe.reduce((a,e)=>a+(e.netAmt||0),0);
     const vat=qe.reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -1081,11 +969,11 @@ function renderVat(){
     </div>`;
   }).join('');
   const tb=document.getElementById('vat-detail-body');
-  if(!ve.length){ tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">🧾</div><p>No VAT entries for ${year}.</p></div></td></tr>`; return; }
+  if(!ve.length){tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">🧾</div><p>No VAT entries for ${year}.</p></div></td></tr>`;return;}
   tb.innerHTML=[...ve].sort((a,b)=>a.date.localeCompare(b.date)).map(e=>{
     let rc='—';
-    if(e.receiptViewLink) rc=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️</a>`;
-    else if(e.receiptLocal) rc=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷</button>`;
+    if(e.receiptViewLink)rc=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️</a>`;
+    else if(e.receiptLocal)rc=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷</button>`;
     return`<tr>
       <td style="white-space:nowrap;">${fmtDate(e.date)}</td>
       <td><span class="badge badge-vat">${quarterOf(e.date)}</span></td>
@@ -1105,7 +993,7 @@ function exportVatCSV(period){
   const year=parseInt(document.getElementById('vat-year').value)||new Date().getFullYear();
   const fp=document.getElementById('vat-prop').value;
   let ve=entries.filter(e=>e.date.startsWith(String(year))&&(!fp||e.prop.startsWith(fp))&&e.type==='Expense'&&(e.vatAmt||0)>0);
-  if(period!=='ALL'){ const ms=quarterMonths(period); ve=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7)))); }
+  if(period!=='ALL'){const ms=quarterMonths(period);ve=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7))));}
   ve=[...ve].sort((a,b)=>a.date.localeCompare(b.date));
   const tG=ve.reduce((a,e)=>a+(e.amount||0),0),tN=ve.reduce((a,e)=>a+(e.netAmt||0),0),tV=ve.reduce((a,e)=>a+(e.vatAmt||0),0);
   const pl=period==='ALL'?`Full Year ${year}`:`${period} ${year}`;
@@ -1119,7 +1007,6 @@ function exportVatCSV(period){
   toast(`VAT CSV — ${ve.length} transactions · £${tV.toFixed(2)} VAT`);
 }
 
-/* ═══════════════ FINANCIALS ═══════════════ */
 function renderFinancials(){
   const year=parseInt(document.getElementById('fin-year').value)||new Date().getFullYear();
   const fp=document.getElementById('fin-prop').value;
@@ -1138,7 +1025,7 @@ function renderFinancials(){
   let rows='';
   months.forEach((m,i)=>{
     const ms=`${year}-${String(i+1).padStart(2,'0')}`;
-    const me=fil.filter(e=>e.date.startsWith(ms)); if(!me.length) return;
+    const me=fil.filter(e=>e.date.startsWith(ms));if(!me.length)return;
     const inc=me.filter(e=>e.type==='Income').reduce((a,e)=>a+(e.amount||0),0);
     const exp=me.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.amount||0),0);
     const vat=me.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -1147,11 +1034,10 @@ function renderFinancials(){
   });
   document.getElementById('fin-body').innerHTML=rows||`<tr><td colspan="6"><div class="empty-state"><p>No data for ${year}.</p></div></td></tr>`;
   const catMap={};
-  fil.forEach(e=>{ const k=e.cat+'|'+e.type; if(!catMap[k]) catMap[k]={cat:e.cat,type:e.type,total:0,vat:0,count:0}; catMap[k].total+=e.amount||0; catMap[k].vat+=e.vatAmt||0; catMap[k].count++; });
+  fil.forEach(e=>{const k=e.cat+'|'+e.type;if(!catMap[k])catMap[k]={cat:e.cat,type:e.type,total:0,vat:0,count:0};catMap[k].total+=e.amount||0;catMap[k].vat+=e.vatAmt||0;catMap[k].count++;});
   document.getElementById('cat-body').innerHTML=Object.values(catMap).sort((a,b)=>b.total-a.total).map(c=>`<tr><td>${esc(c.cat)}</td><td><span class="badge ${c.type==='Income'?'badge-income':'badge-expense'}">${c.type}</span></td><td class="${c.type==='Income'?'amount-income':'amount-expense'}">£${c.total.toFixed(2)}</td><td style="color:var(--purple);">£${c.vat.toFixed(2)}</td><td style="text-align:center;">${c.count}</td></tr>`).join('')||`<tr><td colspan="5"><div class="empty-state"><p>No data.</p></div></td></tr>`;
 }
 
-/* ═══════════════ EXPORT ═══════════════ */
 function exportCSV(){
   const hdr=['GOLDCREST PROPERTY AND SERVICES LIMITED — Operations Log','Exported: '+new Date().toLocaleString('en-GB'),'',
     ['Date','Staff','Property','Type','Category','Description','Gross(£)','Net(£)','VAT Rate','VAT(£)','Mins','Ref','Receipt','Drive Link'].join(',')];
@@ -1159,16 +1045,13 @@ function exportCSV(){
     [e.date,`"${e.staff}"`,`"${e.prop}"`,e.type,`"${e.cat}"`,`"${(e.desc||'').replace(/"/g,'""')}"`,
      (e.amount||0).toFixed(2),(e.netAmt||0).toFixed(2),getVatLabel(e.vatRate||''),(e.vatAmt||0).toFixed(2),
      e.mins||0,`"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',e.receiptViewLink||''].join(','));
-  dlCSV([...hdr,...rows].join('\n'),'Goldcrest_Operations_Log_'+today()+'.csv');
-  toast('CSV exported');
+  dlCSV([...hdr,...rows].join('\n'),'Goldcrest_Operations_Log_'+today()+'.csv');toast('CSV exported');
 }
 function dlCSV(content,filename){
-  const b=new Blob([content],{type:'text/csv'});
-  const u=URL.createObjectURL(b); const a=document.createElement('a');
-  a.href=u; a.download=filename; a.click(); URL.revokeObjectURL(u);
+  const b=new Blob([content],{type:'text/csv'});const u=URL.createObjectURL(b);
+  const a=document.createElement('a');a.href=u;a.download=filename;a.click();URL.revokeObjectURL(u);
 }
 
-/* ═══════════════ TIMER ═══════════════ */
 let tI=null,tS=null,tE=null,tEl=0;
 function pad(n){return String(n).padStart(2,'0');}
 function fmtEl(ms){const s=Math.floor(ms/1000);return`${pad(Math.floor(s/3600))}:${pad(Math.floor((s%3600)/60))}:${pad(s%60)}`;}
@@ -1186,14 +1069,14 @@ function startTimer(){
   document.getElementById('timer-stop-btn').style.display='inline-flex';
 }
 function stopTimer(){
-  tE=new Date(); clearInterval(tI); tI=null;
+  tE=new Date();clearInterval(tI);tI=null;
   document.getElementById('timer-stop-btn').style.display='none';
   document.getElementById('timer-reset-btn').style.display='inline-flex';
   document.getElementById('timer-meta').textContent=tS.toLocaleTimeString('en-GB')+' – '+tE.toLocaleTimeString('en-GB');
   document.getElementById('timer-prefill-area').style.display='block';
 }
 function resetTimer(){
-  clearInterval(tI); tI=null; tS=null; tE=null; tEl=0;
+  clearInterval(tI);tI=null;tS=null;tE=null;tEl=0;
   document.getElementById('timer-display').textContent='00:00:00';
   document.getElementById('timer-display').className='timer-digits';
   document.getElementById('timer-meta').textContent='Timer stopped';
@@ -1215,72 +1098,59 @@ function saveTimerEntry(){
     amount:fee,netAmt:fee,vatAmt:0,vatRate:'exempt',mins,
     evref:'TIMER-'+tS.toISOString().slice(0,16).replace('T','-'),
     desc,receiptFileId:null,receiptLocal:null,receiptViewLink:null});
-  scheduleDriveSave(); resetTimer(); document.getElementById('t-desc').value='';
-  renderLog(); updateSidebar();
+  scheduleDriveSave();resetTimer();document.getElementById('t-desc').value='';
+  renderLog();updateSidebar();
   toast('Session saved — '+mins+' mins / £'+fee.toFixed(2));
 }
 
-/* ═══════════════ STAFF ═══════════════ */
 function populateStaffDropdowns(){
   ['f-staff','t-staff'].forEach(id=>{
-    const sel=document.getElementById(id); if(!sel) return;
+    const sel=document.getElementById(id);if(!sel)return;
     const cur=sel.value;
     sel.innerHTML=staff.map(s=>`<option value="${esc(s.name)}">${esc(s.name)} — ${esc(s.role)}</option>`).join('');
-    if(cur) sel.value=cur;
+    if(cur)sel.value=cur;
   });
   document.getElementById('staff-pills').innerHTML=staff.map(s=>`<span class="staff-pill"><span class="dot"></span>${esc(s.name)}</span>`).join('');
 }
-
 function addStaff(){
   const name=document.getElementById('s-name').value.trim();
   const role=document.getElementById('s-role').value.trim()||'Staff';
   if(!name){toast('Enter a name');return;}
   if(staff.find(s=>s.name.toLowerCase()===name.toLowerCase())){toast('Already exists');return;}
   staff.push({id:Math.max(0,...staff.map(s=>s.id))+1,name,role});
-  scheduleDriveSave(); populateStaffDropdowns(); renderStaffPanel();
-  document.getElementById('s-name').value=''; document.getElementById('s-role').value='';
+  scheduleDriveSave();populateStaffDropdowns();renderStaffPanel();
+  document.getElementById('s-name').value='';document.getElementById('s-role').value='';
   toast(name+' added');
 }
-
 function openEditModal(id){
-  const s=staff.find(x=>x.id===id); if(!s) return;
+  const s=staff.find(x=>x.id===id);if(!s)return;
   document.getElementById('edit-staff-id').value=id;
   document.getElementById('edit-staff-name').value=s.name;
   document.getElementById('edit-staff-role').value=s.role;
   document.getElementById('edit-modal').classList.add('open');
 }
-
-function closeEditModal(){
-  document.getElementById('edit-modal').classList.remove('open');
-}
-
+function closeEditModal(){document.getElementById('edit-modal').classList.remove('open');}
 function saveStaffEdit(){
   const id=parseInt(document.getElementById('edit-staff-id').value);
   const name=document.getElementById('edit-staff-name').value.trim();
   const role=document.getElementById('edit-staff-role').value.trim()||'Staff';
   if(!name){toast('Enter a name');return;}
-  const idx=staff.findIndex(s=>s.id===id); if(idx===-1) return;
+  const idx=staff.findIndex(s=>s.id===id);if(idx===-1)return;
   staff[idx]={...staff[idx],name,role};
-  scheduleDriveSave(); populateStaffDropdowns(); renderStaffPanel();
-  closeEditModal();
-  toast('Staff member updated — syncing to all devices');
+  scheduleDriveSave();populateStaffDropdowns();renderStaffPanel();
+  closeEditModal();toast('Staff member updated — syncing to all devices');
 }
-
 function removeStaff(id){
   const s=staff.find(x=>x.id===id);
   if(!confirm('Remove '+(s?s.name:'this person')+'?'))return;
   staff=staff.filter(x=>x.id!==id);
-  scheduleDriveSave(); populateStaffDropdowns(); renderStaffPanel(); toast('Removed');
+  scheduleDriveSave();populateStaffDropdowns();renderStaffPanel();toast('Removed');
 }
-
 function renderStaffPanel(){
   const el=document.getElementById('staff-list');
   el.innerHTML=staff.length?staff.map(s=>`
     <div class="staff-row">
-      <div class="staff-info">
-        <span class="staff-name">${esc(s.name)}</span>
-        <span class="staff-role">${esc(s.role)}</span>
-      </div>
+      <div class="staff-info"><span class="staff-name">${esc(s.name)}</span><span class="staff-role">${esc(s.role)}</span></div>
       <div class="staff-actions">
         <button class="btn btn-edit" onclick="openEditModal(${s.id})">Edit</button>
         <button class="btn btn-danger" onclick="removeStaff(${s.id})" style="padding:6px 14px;font-size:11px;">Remove</button>
@@ -1288,39 +1158,23 @@ function renderStaffPanel(){
     </div>`).join(''):'<div class="empty-state"><p>No staff added yet.</p></div>';
 }
 
-/* ═══════════════ YEAR DROPDOWNS ═══════════════ */
 function populateYearDropdowns(){
   const cur=new Date().getFullYear();
   ['fin-year','vat-year'].forEach(id=>{
-    const sel=document.getElementById(id); if(!sel) return;
-    sel.innerHTML='';
-    for(let y=cur+1;y>=2022;y--){
-      const o=document.createElement('option');
-      o.value=y; o.textContent=y; if(y===cur)o.selected=true;
-      sel.appendChild(o);
-    }
+    const sel=document.getElementById(id);if(!sel)return;sel.innerHTML='';
+    for(let y=cur+1;y>=2022;y--){const o=document.createElement('option');o.value=y;o.textContent=y;if(y===cur)o.selected=true;sel.appendChild(o);}
   });
 }
-
-/* ═══════════════ TABS ═══════════════ */
 function switchTab(tab,btn){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('panel-'+tab).classList.add('active');
-  if(tab==='financials') renderFinancials();
-  if(tab==='vat') renderVat();
-  if(tab==='staff') renderStaffPanel();
+  btn.classList.add('active');document.getElementById('panel-'+tab).classList.add('active');
+  if(tab==='financials')renderFinancials();
+  if(tab==='vat')renderVat();
+  if(tab==='staff')renderStaffPanel();
 }
+function refreshAllUI(){populateStaffDropdowns();renderLog();updateSidebar();}
 
-/* ═══════════════ REFRESH ALL UI ═══════════════ */
-function refreshAllUI(){
-  populateStaffDropdowns();
-  renderLog();
-  updateSidebar();
-}
-
-/* ═══════════════ UTILS ═══════════════ */
 function tick(){
   const n=new Date();
   document.getElementById('clock-time').textContent=n.toLocaleTimeString('en-GB');
@@ -1328,38 +1182,27 @@ function tick(){
 }
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function fmtDate(d){
-  if(!d) return'';
-  const[y,m,day]=d.split('-');
+  if(!d)return'';const[y,m,day]=d.split('-');
   return`${parseInt(day)} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][parseInt(m)-1]} ${y}`;
 }
 function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3200);
 }
 
-/* ═══════════════ INIT ═══════════════ */
 loadLocal();
-setInterval(tick,1000); tick();
+setInterval(tick,1000);tick();
 document.getElementById('f-date').value=today();
-populateStaffDropdowns();
-populateYearDropdowns();
-renderLog();
-updateSidebar();
-updateDriveSidebar();
-
+populateStaffDropdowns();populateYearDropdowns();renderLog();updateSidebar();updateDriveSidebar();
 if(driveToken){
   setDriveStatus('connected','Drive Connected');
   document.getElementById('sync-btn').style.display='inline-flex';
   document.getElementById('drive-warning').style.display='none';
-  // Auto-sync on load when already connected
   syncFromDrive();
 } else {
   document.getElementById('drive-warning').style.display='block';
 }
-
-// Auto-sync every 5 minutes if connected
-setInterval(()=>{ if(driveToken) syncFromDrive(); }, 5*60*1000);
+setInterval(()=>{if(driveToken)syncFromDrive();},5*60*1000);
 </script>
 </body>
 </html>
