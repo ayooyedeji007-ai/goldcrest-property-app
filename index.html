@@ -7,28 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold:       #C9A84C;
-  --gold-light: #E8CB7A;
-  --gold-dark:  #A07828;
-  --gold-pale:  #F7F0DC;
-  --brown:      #2C1F0E;
-  --brown-mid:  #5A3E20;
-  --cream:      #FDFAF4;
-  --cream-mid:  #F2EAD8;
-  --border:     #DDD0A8;
-  --text:       #2C1F0E;
-  --text-mid:   #6A5030;
-  --text-light: #9A8060;
-  --green:      #2E6B3E;
-  --green-pale: #E8F5EC;
-  --red:        #8B2020;
-  --red-pale:   #FDEAEA;
-  --blue:       #1A3A5C;
-  --blue-pale:  #E8EFF7;
-  --purple:     #5A2D82;
-  --purple-pale:#F0E8FA;
-  --shadow:     0 2px 12px rgba(44,31,14,0.10);
-  --shadow-lg:  0 6px 28px rgba(44,31,14,0.16);
+  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dark:#A07828;--gold-pale:#F7F0DC;
+  --brown:#2C1F0E;--brown-mid:#5A3E20;--cream:#FDFAF4;--cream-mid:#F2EAD8;
+  --border:#DDD0A8;--text:#2C1F0E;--text-mid:#6A5030;--text-light:#9A8060;
+  --green:#2E6B3E;--green-pale:#E8F5EC;--red:#8B2020;--red-pale:#FDEAEA;
+  --blue:#1A3A5C;--blue-pale:#E8EFF7;--purple:#5A2D82;--purple-pale:#F0E8FA;
+  --shadow:0 2px 12px rgba(44,31,14,0.10);--shadow-lg:0 6px 28px rgba(44,31,14,0.16);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;font-size:14px;}
@@ -41,20 +25,25 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .brand-block{display:flex;flex-direction:column;line-height:1;}
 .brand-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);}
 .brand-sub{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:3px;}
-.topbar-right{display:flex;align-items:center;gap:14px;}
+.topbar-right{display:flex;align-items:center;gap:10px;}
 .topbar-clock{font-size:12px;color:rgba(255,255,255,0.55);letter-spacing:1px;text-align:right;}
 .topbar-clock .time-big{font-size:16px;color:var(--gold-light);font-weight:600;display:block;}
 
 /* DRIVE STATUS */
-.drive-status{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.8px;padding:5px 12px;border-radius:20px;cursor:pointer;border:none;transition:all 0.2s;}
+.drive-status{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.8px;padding:5px 12px;border-radius:20px;cursor:pointer;border:none;transition:all 0.2s;white-space:nowrap;}
 .drive-status.disconnected{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}
 .drive-status.connected{background:rgba(46,107,62,0.3);color:#7FD498;}
 .drive-status.connecting{background:rgba(201,168,76,0.2);color:var(--gold-light);}
+.drive-status.syncing{background:rgba(26,58,92,0.4);color:#90CAF9;}
 .drive-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .drive-status.disconnected .drive-dot{background:rgba(255,255,255,0.3);}
 .drive-status.connected .drive-dot{background:#4CAF50;box-shadow:0 0 6px #4CAF50;}
-.drive-status.connecting .drive-dot{background:var(--gold);animation:pulse 1s infinite;}
+.drive-status.connecting .drive-dot,.drive-status.syncing .drive-dot{background:var(--gold);animation:pulse 1s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+/* SYNC INDICATOR */
+.sync-bar{background:var(--blue);color:#fff;font-size:11px;font-weight:600;letter-spacing:1px;text-align:center;padding:5px;display:none;}
+.sync-bar.show{display:block;}
 
 /* TABS */
 .tab-bar{background:var(--brown-mid);display:flex;gap:2px;padding:0 24px;border-bottom:3px solid var(--gold-dark);overflow-x:auto;}
@@ -99,7 +88,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .form-group.full{grid-column:1/-1;}
 .form-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-mid);}
 .form-label .req{color:var(--red);}
-.form-input,.form-select,.form-textarea{border:1px solid var(--border);border-radius:5px;padding:9px 12px;font-family:'Source Sans 3',sans-serif;font-size:13px;color:var(--text);background:var(--cream);transition:border-color 0.2s,box-shadow 0.2s;outline:none;}
+.form-input,.form-select,.form-textarea{border:1px solid var(--border);border-radius:5px;padding:9px 12px;font-family:'Source Sans 3',sans-serif;font-size:13px;color:var(--text);background:var(--cream);transition:border-color 0.2s,box-shadow 0.2s;outline:none;width:100%;}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12);background:#fff;}
 .form-textarea{resize:vertical;min-height:68px;}
 
@@ -107,7 +96,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .vat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;background:var(--purple-pale);border:1px solid #c8a8e8;border-radius:6px;padding:12px 14px;}
 .vat-label-header{grid-column:1/-1;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:4px;}
 
-/* RECEIPT UPLOAD */
+/* RECEIPT */
 .receipt-zone{border:2px dashed var(--border);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--cream);position:relative;overflow:hidden;}
 .receipt-zone:hover,.receipt-zone.drag-over{border-color:var(--gold);background:var(--gold-pale);}
 .receipt-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
@@ -119,14 +108,11 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .remove-img{position:absolute;top:-8px;right:-8px;background:var(--red);color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .camera-btn{display:inline-flex;align-items:center;gap:8px;background:var(--brown);color:var(--gold-light);border:none;border-radius:6px;padding:10px 18px;font-size:12px;font-weight:600;letter-spacing:1px;cursor:pointer;margin-top:8px;position:relative;overflow:hidden;}
 .camera-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-
-/* UPLOAD PROGRESS */
 .upload-progress{margin-top:10px;display:none;}
 .upload-bar-wrap{background:var(--cream-mid);border-radius:20px;height:6px;overflow:hidden;margin-top:6px;}
 .upload-bar{height:100%;background:var(--gold);border-radius:20px;width:0%;transition:width 0.3s;}
 .upload-label{font-size:11px;color:var(--text-mid);}
 .drive-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--blue);text-decoration:none;margin-top:6px;padding:4px 10px;background:var(--blue-pale);border-radius:12px;}
-.drive-link:hover{background:var(--blue);color:#fff;}
 
 /* BUTTONS */
 .btn{padding:10px 20px;border:none;border-radius:5px;font-family:'Source Sans 3',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:7px;}
@@ -140,7 +126,10 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .btn-green:hover{background:var(--green);color:#fff;}
 .btn-purple{background:var(--purple-pale);color:var(--purple);border:1px solid #c0a0e0;}
 .btn-purple:hover{background:var(--purple);color:#fff;}
+.btn-edit{background:var(--blue-pale);color:var(--blue);border:1px solid #a0c0e0;padding:6px 14px;font-size:11px;}
+.btn-edit:hover{background:var(--blue);color:#fff;}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+.btn:disabled{opacity:0.5;cursor:not-allowed;}
 
 /* TABLE */
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:6px;}
@@ -194,7 +183,7 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 .vat-q-card{background:#fff;border:1px solid #c8a8e8;border-radius:8px;padding:16px;box-shadow:var(--shadow);}
 .vat-q-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-bottom:10px;}
 .vat-q-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid #e8d8f8;}
-.vat-q-row:last-child{border-bottom:none;font-weight:700;padding-top:8px;}
+.vat-q-row:last-child{border-bottom:none;padding-top:8px;}
 .vat-q-row .vl{color:var(--text-mid);}
 .vat-q-row .vv{color:var(--purple);font-weight:600;}
 
@@ -207,13 +196,20 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 
 /* STAFF */
 .staff-list{display:flex;flex-direction:column;gap:8px;}
-.staff-row{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px 14px;}
+.staff-row{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px 14px;gap:10px;}
+.staff-info{display:flex;flex-direction:column;flex:1;}
 .staff-name{font-weight:700;font-size:13px;color:var(--brown);}
 .staff-role{font-size:11px;color:var(--text-light);}
+.staff-actions{display:flex;gap:6px;flex-shrink:0;}
 
-/* INFO BOX */
+/* EDIT MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#fff;border-radius:10px;padding:28px;width:90%;max-width:400px;box-shadow:var(--shadow-lg);}
+.modal-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--brown);margin-bottom:18px;}
+
+/* INFO / WARN */
 .info-box{background:var(--blue-pale);border:1px solid #b0c8e8;border-radius:6px;padding:12px 16px;font-size:12px;color:var(--blue);margin-bottom:16px;line-height:1.6;}
-.info-box strong{font-weight:700;}
 .warn-box{background:#FFF8E1;border:1px solid #FFD54F;border-radius:6px;padding:12px 16px;font-size:12px;color:#7A5800;margin-bottom:16px;line-height:1.6;}
 
 /* EMPTY */
@@ -230,14 +226,14 @@ tbody td{padding:9px 12px;vertical-align:middle;}
   .timer-digits{font-size:38px;}
   .vat-row{grid-template-columns:1fr 1fr;}
   .form-grid{grid-template-columns:1fr 1fr;}
-  .topbar{padding:0 14px;}
+  .topbar{padding:0 12px;}
   .brand-name{font-size:14px;}
+  .brand-sub{display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-left">
     <div class="logo-wrap">
@@ -266,7 +262,8 @@ tbody td{padding:9px 12px;vertical-align:middle;}
   </div>
 </div>
 
-<!-- TABS -->
+<div class="sync-bar" id="sync-bar">Syncing with Google Drive...</div>
+
 <div class="tab-bar">
   <button class="tab-btn active" onclick="switchTab('log',this)">Activity Log</button>
   <button class="tab-btn" onclick="switchTab('timer',this)">Timer</button>
@@ -276,7 +273,6 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 </div>
 
 <div class="main">
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <div>
       <div class="sidebar-label">Properties</div>
@@ -305,20 +301,17 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       <div id="staff-pills"></div>
     </div>
     <div>
-      <div class="sidebar-label">Google Drive</div>
-      <div id="drive-sidebar-info" style="font-size:11px;color:var(--text-light);line-height:1.6;">
-        Not connected.<br>Tap "Connect Drive" above to enable receipt cloud sync.
-      </div>
+      <div class="sidebar-label">Google Drive Sync</div>
+      <div id="drive-sidebar-info" style="font-size:11px;color:var(--text-light);line-height:1.7;"></div>
     </div>
   </div>
 
-  <!-- CONTENT -->
   <div class="content">
 
-    <!-- ══ LOG PANEL ══ -->
+    <!-- LOG -->
     <div class="panel active" id="panel-log">
       <div id="drive-warning" class="warn-box" style="display:none;">
-        ⚠️ <strong>Google Drive not connected.</strong> Receipts will be stored locally on this device only. Connect Drive (top right) to sync across all devices.
+        ⚠️ <strong>Google Drive not connected.</strong> Data is stored locally on this device only. Connect Drive to sync entries, staff and receipts across all devices.
       </div>
 
       <div class="form-card">
@@ -351,22 +344,12 @@ tbody td{padding:9px 12px;vertical-align:middle;}
           <div class="form-group">
             <label class="form-label">Category</label>
             <select class="form-select" id="f-cat">
-              <option value="Rent Received">Rent Received</option>
-              <option value="Maintenance">Maintenance</option>
-              <option value="Repairs">Repairs</option>
-              <option value="Inspection">Inspection</option>
-              <option value="Contractor">Contractor</option>
-              <option value="Insurance">Insurance</option>
-              <option value="Utilities">Utilities</option>
-              <option value="Mortgage / Finance">Mortgage / Finance</option>
-              <option value="Management Fee">Management Fee</option>
-              <option value="Legal / Professional">Legal / Professional</option>
-              <option value="Letting / Advertising">Letting / Advertising</option>
-              <option value="Council Tax">Council Tax</option>
-              <option value="Ground Rent / Service Charge">Ground Rent / Service Charge</option>
-              <option value="Cleaning">Cleaning</option>
-              <option value="Administration">Administration</option>
-              <option value="Other">Other</option>
+              <option>Rent Received</option><option>Maintenance</option><option>Repairs</option>
+              <option>Inspection</option><option>Contractor</option><option>Insurance</option>
+              <option>Utilities</option><option>Mortgage / Finance</option><option>Management Fee</option>
+              <option>Legal / Professional</option><option>Letting / Advertising</option>
+              <option>Council Tax</option><option>Ground Rent / Service Charge</option>
+              <option>Cleaning</option><option>Administration</option><option>Other</option>
             </select>
           </div>
           <div class="form-group">
@@ -386,8 +369,6 @@ tbody td{padding:9px 12px;vertical-align:middle;}
             <textarea class="form-textarea" id="f-desc" placeholder="Describe the activity in detail..."></textarea>
           </div>
         </div>
-
-        <!-- VAT SECTION -->
         <div id="vat-section">
           <div class="vat-row">
             <div class="vat-label-header">🧾 VAT Details</div>
@@ -411,14 +392,12 @@ tbody td{padding:9px 12px;vertical-align:middle;}
             </div>
           </div>
         </div>
-
-        <!-- RECEIPT UPLOAD -->
         <div class="form-group" style="margin-bottom:16px;">
           <label class="form-label">Receipt / Invoice Image</label>
           <div class="receipt-zone" id="receipt-zone" ondragover="onDragOver(event)" ondragleave="onDragLeave()" ondrop="onDrop(event)">
             <input type="file" id="f-receipt-file" accept="image/*,application/pdf" onchange="handleFileSelect(event)">
             <div class="rz-icon">📎</div>
-            <div class="rz-text">Drop image here, or tap to browse files</div>
+            <div class="rz-text">Drop image here, or tap to browse</div>
             <div class="rz-hint">JPG · PNG · HEIC · PDF — max 10MB</div>
           </div>
           <button class="camera-btn">
@@ -432,14 +411,12 @@ tbody td{padding:9px 12px;vertical-align:middle;}
           </div>
           <div id="drive-file-link"></div>
         </div>
-
         <div class="btn-row">
           <button class="btn btn-primary" id="save-btn" onclick="addEntry()">+ Add Entry</button>
           <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
         </div>
       </div>
 
-      <!-- Filter Bar -->
       <div class="filter-bar">
         <span class="filter-label">Filter:</span>
         <input type="month" class="form-input" id="fil-month" onchange="renderLog()">
@@ -452,7 +429,8 @@ tbody td{padding:9px 12px;vertical-align:middle;}
           <option value="">All Categories</option>
         </select>
         <button class="btn btn-secondary" onclick="clearFilters()">Clear</button>
-        <div style="margin-left:auto;">
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-green" onclick="syncFromDrive()" id="sync-btn" style="display:none;">↻ Sync Now</button>
           <button class="btn btn-green" onclick="exportCSV()">↓ Export CSV</button>
         </div>
       </div>
@@ -460,18 +438,14 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       <div class="log-table-wrap">
         <table>
           <thead>
-            <tr>
-              <th>Date</th><th>Staff</th><th>Property</th><th>Type</th>
-              <th>Category</th><th>Description</th><th>Gross</th>
-              <th>VAT</th><th>Receipt</th><th>Ref</th><th></th>
-            </tr>
+            <tr><th>Date</th><th>Staff</th><th>Property</th><th>Type</th><th>Category</th><th>Description</th><th>Gross</th><th>VAT</th><th>Receipt</th><th>Ref</th><th></th></tr>
           </thead>
           <tbody id="log-body"></tbody>
         </table>
       </div>
     </div>
 
-    <!-- ══ TIMER PANEL ══ -->
+    <!-- TIMER -->
     <div class="panel" id="panel-timer">
       <div class="form-card">
         <div class="form-card-title">Activity Timer</div>
@@ -510,12 +484,8 @@ tbody td{padding:9px 12px;vertical-align:middle;}
             <div class="form-group">
               <label class="form-label">Category</label>
               <select class="form-select" id="t-cat">
-                <option value="Administration">Administration</option>
-                <option value="Inspection">Inspection</option>
-                <option value="Maintenance">Maintenance</option>
-                <option value="Management Fee">Management Fee</option>
-                <option value="Legal / Professional">Legal / Professional</option>
-                <option value="Other">Other</option>
+                <option>Administration</option><option>Inspection</option><option>Maintenance</option>
+                <option>Management Fee</option><option>Legal / Professional</option><option>Other</option>
               </select>
             </div>
             <div class="form-group full">
@@ -530,7 +500,7 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       </div>
     </div>
 
-    <!-- ══ VAT PANEL ══ -->
+    <!-- VAT -->
     <div class="panel" id="panel-vat">
       <div class="form-card">
         <div class="form-card-title">VAT Returns</div>
@@ -568,7 +538,7 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       </div>
     </div>
 
-    <!-- ══ FINANCIALS PANEL ══ -->
+    <!-- FINANCIALS -->
     <div class="panel" id="panel-financials">
       <div class="summary-grid" id="fin-summary-cards"></div>
       <div class="form-card">
@@ -601,7 +571,7 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       </div>
     </div>
 
-    <!-- ══ STAFF PANEL ══ -->
+    <!-- STAFF -->
     <div class="panel" id="panel-staff">
       <div class="form-card">
         <div class="form-card-title">Add Staff Member</div>
@@ -634,78 +604,94 @@ tbody td{padding:9px 12px;vertical-align:middle;}
   <button class="lightbox-close" onclick="closeLightbox()">Close</button>
 </div>
 
+<!-- EDIT STAFF MODAL -->
+<div class="modal-overlay" id="edit-modal">
+  <div class="modal-box">
+    <div class="modal-title">Edit Staff Member</div>
+    <input type="hidden" id="edit-staff-id">
+    <div class="form-group" style="margin-bottom:14px;">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-input" id="edit-staff-name">
+    </div>
+    <div class="form-group" style="margin-bottom:20px;">
+      <label class="form-label">Role</label>
+      <input type="text" class="form-input" id="edit-staff-role">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="saveStaffEdit()">Save Changes</button>
+      <button class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
-<!-- Google Identity Services -->
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-
 <script>
-/* ═══════════════════════════════
-   CONFIG
-═══════════════════════════════ */
-const GDRIVE_CLIENT_ID  = '737294901316-164o32a3vvmc569ttt9g3v0l03gi4gh3.apps.googleusercontent.com';
-const GDRIVE_FOLDER_ID  = '1RLC85m_YTAd7zcdATmoWcFSggTLz2eLv';
-const GDRIVE_SCOPE      = 'https://www.googleapis.com/auth/drive.file';
+/* ═══════════════ CONFIG ═══════════════ */
+const GDRIVE_CLIENT_ID = '737294901316-164o32a3vvmc569ttt9g3v0l03gi4gh3.apps.googleusercontent.com';
+const GDRIVE_FOLDER_ID = '1RLC85m_YTAd7zcdATmoWcFSggTLz2eLv';
+const GDRIVE_SCOPE     = 'https://www.googleapis.com/auth/drive.file';
+const DATA_FILENAME    = 'goldcrest_data.json';
 
-/* ═══════════════════════════════
-   STATE
-═══════════════════════════════ */
-const SK_E='gc3_entries', SK_S='gc3_staff', SK_ID='gc3_nid', SK_TOK='gc3_tok';
+/* ═══════════════ STATE ═══════════════ */
 let entries=[], staff=[], nextId=1, activeProp='ALL';
-let pendingFile=null;       // {dataUrl, file} waiting to upload
-let driveToken=null;        // OAuth access token
+let driveToken=null, dataFileId=null, pendingFile=null;
+let saveTimer=null;
 
-/* ═══════════════════════════════
-   PERSISTENCE
-═══════════════════════════════ */
-function save(){
-  // Store entries WITHOUT receipt data URLs (those are on Drive)
-  const slim=entries.map(e=>({...e,receiptLocal:undefined}));
-  localStorage.setItem(SK_E,JSON.stringify(slim));
+/* ═══════════════ LOCAL STORAGE ═══════════════ */
+const SK_E='gc4_entries',SK_S='gc4_staff',SK_ID='gc4_nid',SK_TOK='gc4_tok',SK_FID='gc4_fid';
+
+function saveLocal(){
+  localStorage.setItem(SK_E,JSON.stringify(entries));
   localStorage.setItem(SK_S,JSON.stringify(staff));
   localStorage.setItem(SK_ID,nextId);
+  if(dataFileId) localStorage.setItem(SK_FID,dataFileId);
 }
-function load(){
+
+function loadLocal(){
   try{ entries=JSON.parse(localStorage.getItem(SK_E))||[]; }catch{ entries=[]; }
   try{ staff=JSON.parse(localStorage.getItem(SK_S))||[]; }catch{ staff=[]; }
   nextId=parseInt(localStorage.getItem(SK_ID))||1;
   driveToken=localStorage.getItem(SK_TOK)||null;
+  dataFileId=localStorage.getItem(SK_FID)||null;
   if(!staff.length){
-    staff=[{id:1,name:'Dola',role:'Director'},{id:2,name:'Ken',role:'Director'}];
-    save();
+    staff=[{id:1,name:'Dola',role:'Director'},{id:2,name:'Ken',role:'Property Manager'}];
+    saveLocal();
   }
 }
 
-/* ═══════════════════════════════
-   GOOGLE DRIVE AUTH
-═══════════════════════════════ */
+/* ═══════════════ DRIVE AUTH ═══════════════ */
 function handleDriveAuth(){
   if(driveToken){ signOutDrive(); return; }
   setDriveStatus('connecting','Connecting...');
   const client=google.accounts.oauth2.initTokenClient({
-    client_id: GDRIVE_CLIENT_ID,
-    scope: GDRIVE_SCOPE,
-    callback:(resp)=>{
+    client_id:GDRIVE_CLIENT_ID,
+    scope:GDRIVE_SCOPE,
+    callback:async(resp)=>{
       if(resp.error){ setDriveStatus('disconnected','Connect Drive'); toast('Drive auth failed: '+resp.error); return; }
       driveToken=resp.access_token;
       localStorage.setItem(SK_TOK,driveToken);
       setDriveStatus('connected','Drive Connected');
-      updateDriveSidebar();
+      document.getElementById('sync-btn').style.display='inline-flex';
       document.getElementById('drive-warning').style.display='none';
-      toast('Google Drive connected — receipts will sync automatically');
+      toast('Google Drive connected — syncing data...');
+      await syncFromDrive();
+      updateDriveSidebar();
     }
   });
   client.requestAccessToken();
 }
 
 function signOutDrive(){
-  if(!confirm('Disconnect Google Drive? Receipts already uploaded remain in Drive.')) return;
+  if(!confirm('Disconnect Google Drive?')) return;
   if(driveToken) google.accounts.oauth2.revoke(driveToken,()=>{});
-  driveToken=null;
-  localStorage.removeItem(SK_TOK);
+  driveToken=null; dataFileId=null;
+  localStorage.removeItem(SK_TOK); localStorage.removeItem(SK_FID);
   setDriveStatus('disconnected','Connect Drive');
-  updateDriveSidebar();
-  toast('Google Drive disconnected');
+  document.getElementById('sync-btn').style.display='none';
+  document.getElementById('drive-warning').style.display='block';
+  updateDriveSidebar(); toast('Disconnected from Drive');
 }
 
 function setDriveStatus(state,label){
@@ -717,96 +703,160 @@ function setDriveStatus(state,label){
 function updateDriveSidebar(){
   const el=document.getElementById('drive-sidebar-info');
   if(driveToken){
+    const t=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
     el.innerHTML=`<span style="color:var(--green);font-weight:600;">✓ Connected</span><br>
-    Receipts folder:<br>
-    <a href="https://drive.google.com/drive/folders/${GDRIVE_FOLDER_ID}" target="_blank" style="color:var(--blue);">Open in Drive ↗</a>`;
+    Last sync: ${t}<br>
+    <a href="https://drive.google.com/drive/folders/${GDRIVE_FOLDER_ID}" target="_blank" style="color:var(--blue);">Open Drive folder ↗</a>`;
   } else {
-    el.innerHTML='Not connected.<br>Tap "Connect Drive" above to enable receipt cloud sync.';
+    el.innerHTML='Not connected.<br>Tap "Connect Drive" to sync data across all devices.';
   }
 }
 
-/* ═══════════════════════════════
-   UPLOAD TO GOOGLE DRIVE
-═══════════════════════════════ */
-async function uploadToDrive(file, filename){
+/* ═══════════════ DRIVE DATA SYNC ═══════════════ */
+async function findDataFile(){
   if(!driveToken) return null;
+  try{
+    const res=await fetch(`https://www.googleapis.com/drive/v3/files?q=name='${DATA_FILENAME}'+and+'${GDRIVE_FOLDER_ID}'+in+parents+and+trashed=false&fields=files(id,name,modifiedTime)`,{
+      headers:{'Authorization':'Bearer '+driveToken}
+    });
+    if(res.status===401){ handleTokenExpiry(); return null; }
+    const data=await res.json();
+    return data.files&&data.files.length>0 ? data.files[0].id : null;
+  } catch(e){ return null; }
+}
 
-  showUploadProgress(0,'Preparing upload...');
-
-  // Create multipart body
-  const metadata={
-    name: filename,
-    parents:[GDRIVE_FOLDER_ID],
-    mimeType: file.type||'image/jpeg'
-  };
-
-  // Convert file to ArrayBuffer
-  const arrayBuf=await file.arrayBuffer();
-
-  const boundary='gc_boundary_'+Date.now();
-  const metaStr=JSON.stringify(metadata);
-
-  // Build multipart/related body manually
-  const encoder=new TextEncoder();
-  const metaPart=encoder.encode(
-    `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${metaStr}\r\n--${boundary}\r\nContent-Type: ${file.type||'image/jpeg'}\r\n\r\n`
-  );
-  const closing=encoder.encode(`\r\n--${boundary}--`);
-  const body=new Uint8Array(metaPart.byteLength+arrayBuf.byteLength+closing.byteLength);
-  body.set(metaPart,0);
-  body.set(new Uint8Array(arrayBuf),metaPart.byteLength);
-  body.set(closing,metaPart.byteLength+arrayBuf.byteLength);
-
-  showUploadProgress(40,'Uploading...');
+async function syncFromDrive(){
+  if(!driveToken) return;
+  showSyncBar();
+  setDriveStatus('syncing','Syncing...');
 
   try{
-    const res=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink,webContentLink',{
-      method:'POST',
-      headers:{
-        'Authorization':'Bearer '+driveToken,
-        'Content-Type':`multipart/related; boundary=${boundary}`
-      },
-      body:body
-    });
+    // Find or confirm data file
+    const fid=dataFileId||await findDataFile();
 
-    if(!res.ok){
-      const err=await res.json();
-      // Token expired
-      if(res.status===401){
-        driveToken=null; localStorage.removeItem(SK_TOK);
-        setDriveStatus('disconnected','Connect Drive');
-        toast('Drive session expired — please reconnect');
-      } else {
-        toast('Drive upload failed: '+(err.error?.message||res.status));
+    if(fid){
+      dataFileId=fid;
+      localStorage.setItem(SK_FID,fid);
+      // Download data
+      const res=await fetch(`https://www.googleapis.com/drive/v3/files/${fid}?alt=media`,{
+        headers:{'Authorization':'Bearer '+driveToken}
+      });
+      if(res.status===401){ handleTokenExpiry(); return; }
+      if(res.ok){
+        const data=await res.json();
+        if(data.entries) entries=data.entries;
+        if(data.staff) staff=data.staff;
+        if(data.nextId) nextId=data.nextId;
+        saveLocal();
+        refreshAllUI();
+        toast('Data synced from Drive');
       }
-      hideUploadProgress();
-      return null;
+    } else {
+      // No file yet — push local data up
+      await saveToDrive();
     }
+  } catch(e){
+    toast('Sync error: '+e.message);
+  }
 
-    const data=await res.json();
+  setDriveStatus('connected','Drive Connected');
+  hideSyncBar();
+  updateDriveSidebar();
+}
+
+async function saveToDrive(){
+  if(!driveToken) return;
+
+  const payload=JSON.stringify({entries,staff,nextId,savedAt:new Date().toISOString()});
+  const blob=new Blob([payload],{type:'application/json'});
+
+  if(dataFileId){
+    // Update existing file
+    const res=await fetch(`https://www.googleapis.com/upload/drive/v3/files/${dataFileId}?uploadType=media`,{
+      method:'PATCH',
+      headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},
+      body:blob
+    });
+    if(res.status===401){ handleTokenExpiry(); return; }
+    if(!res.ok){ const e=await res.json(); console.error('Drive save error',e); }
+  } else {
+    // Create new file
+    const meta={name:DATA_FILENAME,parents:[GDRIVE_FOLDER_ID],mimeType:'application/json'};
+    const boundary='gc_b_'+Date.now();
+    const enc=new TextEncoder();
+    const metaPart=enc.encode(`--${boundary}\r\nContent-Type: application/json\r\n\r\n${JSON.stringify(meta)}\r\n--${boundary}\r\nContent-Type: application/json\r\n\r\n`);
+    const dataPart=enc.encode(payload);
+    const closing=enc.encode(`\r\n--${boundary}--`);
+    const body=new Uint8Array(metaPart.byteLength+dataPart.byteLength+closing.byteLength);
+    body.set(metaPart,0); body.set(dataPart,metaPart.byteLength); body.set(closing,metaPart.byteLength+dataPart.byteLength);
+
+    const res=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',{
+      method:'POST',
+      headers:{'Authorization':'Bearer '+driveToken,'Content-Type':`multipart/related; boundary=${boundary}`},
+      body
+    });
+    if(res.status===401){ handleTokenExpiry(); return; }
+    if(res.ok){
+      const d=await res.json();
+      dataFileId=d.id;
+      localStorage.setItem(SK_FID,dataFileId);
+    }
+  }
+}
+
+// Debounced save -- waits 2s after last change before writing to Drive
+function scheduleDriveSave(){
+  saveLocal();
+  if(!driveToken) return;
+  clearTimeout(saveTimer);
+  setDriveStatus('syncing','Saving...');
+  saveTimer=setTimeout(async()=>{
+    await saveToDrive();
+    setDriveStatus('connected','Drive Connected');
+    updateDriveSidebar();
+  },2000);
+}
+
+function handleTokenExpiry(){
+  driveToken=null; localStorage.removeItem(SK_TOK);
+  setDriveStatus('disconnected','Connect Drive');
+  toast('Drive session expired — please reconnect');
+}
+
+function showSyncBar(){ document.getElementById('sync-bar').classList.add('show'); }
+function hideSyncBar(){ document.getElementById('sync-bar').classList.remove('show'); }
+
+/* ═══════════════ RECEIPT UPLOAD ═══════════════ */
+async function uploadToDrive(file,filename){
+  if(!driveToken) return null;
+  showUploadProgress(0,'Preparing...');
+  const meta={name:filename,parents:[GDRIVE_FOLDER_ID],mimeType:file.type||'image/jpeg'};
+  const boundary='gc_r_'+Date.now();
+  const enc=new TextEncoder();
+  const arrayBuf=await file.arrayBuffer();
+  const metaPart=enc.encode(`--${boundary}\r\nContent-Type: application/json\r\n\r\n${JSON.stringify(meta)}\r\n--${boundary}\r\nContent-Type: ${file.type||'image/jpeg'}\r\n\r\n`);
+  const closing=enc.encode(`\r\n--${boundary}--`);
+  const body=new Uint8Array(metaPart.byteLength+arrayBuf.byteLength+closing.byteLength);
+  body.set(metaPart,0); body.set(new Uint8Array(arrayBuf),metaPart.byteLength); body.set(closing,metaPart.byteLength+arrayBuf.byteLength);
+  showUploadProgress(40,'Uploading...');
+  try{
+    const res=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name',{
+      method:'POST',
+      headers:{'Authorization':'Bearer '+driveToken,'Content-Type':`multipart/related; boundary=${boundary}`},
+      body
+    });
+    if(!res.ok){ if(res.status===401) handleTokenExpiry(); hideUploadProgress(); return null; }
+    const d=await res.json();
     showUploadProgress(90,'Finalising...');
-
-    // Make file accessible to anyone with the link
-    await fetch(`https://www.googleapis.com/drive/v3/files/${data.id}/permissions`,{
+    await fetch(`https://www.googleapis.com/drive/v3/files/${d.id}/permissions`,{
       method:'POST',
       headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},
       body:JSON.stringify({role:'reader',type:'anyone'})
     });
-
-    showUploadProgress(100,'Upload complete ✓');
-    setTimeout(hideUploadProgress,1500);
-
-    return {
-      fileId:   data.id,
-      fileName: data.name,
-      viewLink: `https://drive.google.com/file/d/${data.id}/view`,
-      thumbLink:`https://drive.google.com/thumbnail?id=${data.id}&sz=w400`
-    };
-  } catch(e){
-    toast('Upload error: '+e.message);
-    hideUploadProgress();
-    return null;
-  }
+    showUploadProgress(100,'Done ✓');
+    setTimeout(hideUploadProgress,1200);
+    return{fileId:d.id,fileName:d.name,viewLink:`https://drive.google.com/file/d/${d.id}/view`,thumbLink:`https://drive.google.com/thumbnail?id=${d.id}&sz=w400`};
+  } catch(e){ hideUploadProgress(); return null; }
 }
 
 function showUploadProgress(pct,label){
@@ -819,63 +869,39 @@ function hideUploadProgress(){
   document.getElementById('upload-bar').style.width='0%';
 }
 
-/* ═══════════════════════════════
-   RECEIPT HANDLING
-═══════════════════════════════ */
+/* ═══════════════ FILE SELECT / DROP ═══════════════ */
 function handleFileSelect(evt){
-  const file=evt.target.files[0];
-  if(!file) return;
+  const file=evt.target.files[0]; if(!file) return;
   if(file.size>10*1024*1024){ toast('File too large — max 10MB'); return; }
   pendingFile=file;
   const reader=new FileReader();
-  reader.onload=e=>{
-    showReceiptPreview('receipt-preview-form', e.target.result, ()=>{
-      pendingFile=null;
-      clearReceiptPreview('receipt-preview-form');
-      document.getElementById('drive-file-link').innerHTML='';
-    });
-  };
+  reader.onload=e=>showReceiptPreview('receipt-preview-form',e.target.result,()=>{ pendingFile=null; clearReceiptPreview('receipt-preview-form'); document.getElementById('drive-file-link').innerHTML=''; });
   reader.readAsDataURL(file);
-  // Clear other file input to avoid double-select issues
   evt.target.value='';
 }
-
-function showReceiptPreview(cId, src, onRemove){
-  const el=document.getElementById(cId);
-  el.innerHTML='';
-  const wrap=document.createElement('div');
-  wrap.className='receipt-preview';
-  const img=document.createElement('img');
-  img.src=src; img.onerror=()=>{ img.style.display='none'; };
-  const btn=document.createElement('button');
-  btn.className='remove-img'; btn.textContent='✕'; btn.onclick=onRemove;
-  wrap.appendChild(img); wrap.appendChild(btn);
-  el.appendChild(wrap);
+function showReceiptPreview(cId,src,onRemove){
+  const el=document.getElementById(cId); el.innerHTML='';
+  const wrap=document.createElement('div'); wrap.className='receipt-preview';
+  const img=document.createElement('img'); img.src=src;
+  const btn=document.createElement('button'); btn.className='remove-img'; btn.textContent='✕'; btn.onclick=onRemove;
+  wrap.appendChild(img); wrap.appendChild(btn); el.appendChild(wrap);
 }
 function clearReceiptPreview(cId){ document.getElementById(cId).innerHTML=''; }
-
 function onDragOver(e){ e.preventDefault(); document.getElementById('receipt-zone').classList.add('drag-over'); }
 function onDragLeave(){ document.getElementById('receipt-zone').classList.remove('drag-over'); }
 function onDrop(e){
   e.preventDefault(); onDragLeave();
-  const file=e.dataTransfer.files[0];
-  if(!file) return;
+  const file=e.dataTransfer.files[0]; if(!file) return;
   if(file.size>10*1024*1024){ toast('File too large'); return; }
   pendingFile=file;
   const reader=new FileReader();
-  reader.onload=ev=>showReceiptPreview('receipt-preview-form',ev.target.result,()=>{ pendingFile=null; clearReceiptPreview('receipt-preview-form'); document.getElementById('drive-file-link').innerHTML=''; });
+  reader.onload=ev=>showReceiptPreview('receipt-preview-form',ev.target.result,()=>{ pendingFile=null; clearReceiptPreview('receipt-preview-form'); });
   reader.readAsDataURL(file);
 }
-
-/* ═══════════════════════════════
-   LIGHTBOX
-═══════════════════════════════ */
 function openLightbox(src){ document.getElementById('lightbox-img').src=src; document.getElementById('lightbox').classList.add('open'); }
 function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
 
-/* ═══════════════════════════════
-   VAT CALC
-═══════════════════════════════ */
+/* ═══════════════ VAT CALC ═══════════════ */
 function onTypeChange(){
   const t=document.getElementById('f-type').value;
   document.getElementById('vat-section').style.display=t==='Expense'?'block':'none';
@@ -884,25 +910,21 @@ function onTypeChange(){
 function autoCalcVat(){
   const rate=document.getElementById('f-vatrate').value;
   if(rate==='manual'||rate==='exempt') return;
-  const gross=parseFloat(document.getElementById('f-amount').value)||0;
-  if(!gross) return;
+  const gross=parseFloat(document.getElementById('f-amount').value)||0; if(!gross) return;
   const r=parseFloat(rate)/100;
   document.getElementById('f-net').value=(gross/(1+r)).toFixed(2);
-  document.getElementById('f-vat').value=(gross-(gross/(1+r))).toFixed(2);
+  document.getElementById('f-vat').value=(gross-gross/(1+r)).toFixed(2);
 }
 function onNetChange(){
-  const rate=document.getElementById('f-vatrate').value;
-  if(rate==='manual'||rate==='exempt') return;
+  const rate=document.getElementById('f-vatrate').value; if(rate==='manual'||rate==='exempt') return;
   const net=parseFloat(document.getElementById('f-net').value)||0;
   const r=parseFloat(rate)/100;
   document.getElementById('f-vat').value=(net*r).toFixed(2);
   document.getElementById('f-amount').value=(net+net*r).toFixed(2);
 }
-function getVatLabel(v){ return {'20':'20%','5':'5%','0':'0%','exempt':'Exempt','manual':'Manual'}[v]||v; }
+function getVatLabel(v){ return{'20':'20%','5':'5%','0':'0%','exempt':'Exempt','manual':'Manual'}[v]||v; }
 
-/* ═══════════════════════════════
-   ADD ENTRY
-═══════════════════════════════ */
+/* ═══════════════ ADD ENTRY ═══════════════ */
 function today(){ return new Date().toISOString().slice(0,10); }
 
 async function addEntry(){
@@ -910,35 +932,26 @@ async function addEntry(){
   const desc=document.getElementById('f-desc').value.trim();
   if(!date){ toast('Select a date'); return; }
   if(!desc){ toast('Add a description'); return; }
-
   const type=document.getElementById('f-type').value;
   const btn=document.getElementById('save-btn');
   btn.disabled=true; btn.textContent='Saving...';
 
   let receiptData=null;
-
-  // Upload receipt to Drive if available
   if(pendingFile){
     if(driveToken){
       const stamp=new Date().toISOString().slice(0,19).replace(/[T:]/g,'-');
-      const fname=`Receipt_${stamp}_${pendingFile.name}`;
-      receiptData=await uploadToDrive(pendingFile,fname);
-      if(receiptData){
-        document.getElementById('drive-file-link').innerHTML=
-          `<a href="${receiptData.viewLink}" target="_blank" class="drive-link">☁️ Saved to Drive: ${receiptData.fileName}</a>`;
-      }
+      receiptData=await uploadToDrive(pendingFile,`Receipt_${stamp}_${pendingFile.name}`);
+      if(receiptData) document.getElementById('drive-file-link').innerHTML=`<a href="${receiptData.viewLink}" target="_blank" class="drive-link">☁️ Saved: ${receiptData.fileName}</a>`;
     } else {
-      // Fallback: store as base64 locally
       receiptData=await fileToBase64(pendingFile);
     }
   }
 
-  const entry={
-    id:nextId++, date,
+  entries.unshift({
+    id:nextId++,date,
     staff:document.getElementById('f-staff').value,
     prop:document.getElementById('f-prop').value,
-    type,
-    cat:document.getElementById('f-cat').value,
+    type,cat:document.getElementById('f-cat').value,
     amount:parseFloat(document.getElementById('f-amount').value)||0,
     netAmt:type==='Expense'?(parseFloat(document.getElementById('f-net').value)||0):0,
     vatAmt:type==='Expense'?(parseFloat(document.getElementById('f-vat').value)||0):0,
@@ -946,30 +959,22 @@ async function addEntry(){
     mins:parseInt(document.getElementById('f-mins').value)||0,
     evref:document.getElementById('f-evref').value.trim(),
     desc,
-    // Drive receipt info
-    receiptFileId:  receiptData?.fileId   || null,
-    receiptName:    receiptData?.fileName || null,
-    receiptViewLink:receiptData?.viewLink || null,
-    receiptThumb:   receiptData?.thumbLink|| null,
-    // Local fallback (base64) only if Drive not connected
-    receiptLocal: (typeof receiptData==='string') ? receiptData : null
-  };
+    receiptFileId:receiptData?.fileId||null,
+    receiptName:receiptData?.fileName||null,
+    receiptViewLink:receiptData?.viewLink||null,
+    receiptLocal:(typeof receiptData==='string')?receiptData:null
+  });
 
-  entries.unshift(entry);
-  save();
+  scheduleDriveSave();
   pendingFile=null;
   clearForm();
   renderLog(); updateSidebar();
   btn.disabled=false; btn.textContent='+ Add Entry';
-  toast('Entry saved'+(entry.receiptFileId?' — receipt synced to Drive':entry.receiptLocal?' — receipt saved locally':''));
+  toast('Entry saved'+(receiptData?.fileId?' — receipt synced to Drive':receiptData?' — receipt saved locally':''));
 }
 
 function fileToBase64(file){
-  return new Promise(res=>{
-    const r=new FileReader();
-    r.onload=e=>res(e.target.result);
-    r.readAsDataURL(file);
-  });
+  return new Promise(res=>{ const r=new FileReader(); r.onload=e=>res(e.target.result); r.readAsDataURL(file); });
 }
 
 function clearForm(){
@@ -979,21 +984,17 @@ function clearForm(){
   document.getElementById('f-vatrate').value='20';
   document.getElementById('f-amount').style.borderColor='';
   document.getElementById('vat-section').style.display='block';
-  pendingFile=null;
-  clearReceiptPreview('receipt-preview-form');
-  document.getElementById('drive-file-link').innerHTML='';
-  hideUploadProgress();
+  pendingFile=null; clearReceiptPreview('receipt-preview-form');
+  document.getElementById('drive-file-link').innerHTML=''; hideUploadProgress();
 }
 
-/* ═══════════════════════════════
-   RENDER LOG
-═══════════════════════════════ */
 function deleteEntry(id){
   if(!confirm('Delete this entry?')) return;
   entries=entries.filter(e=>e.id!==id);
-  save(); renderLog(); updateSidebar(); toast('Deleted');
+  scheduleDriveSave(); renderLog(); updateSidebar(); toast('Deleted');
 }
 
+/* ═══════════════ RENDER LOG ═══════════════ */
 function renderLog(){
   const month=document.getElementById('fil-month').value;
   const fType=document.getElementById('fil-type').value;
@@ -1005,26 +1006,15 @@ function renderLog(){
     if(fCat&&e.cat!==fCat) return false;
     return true;
   });
-  const tb=document.getElementById('log-body');
-  if(!fil.length){
-    tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">📋</div><p>No entries found.</p></div></td></tr>`;
-    return;
-  }
-
-  // Show drive warning if not connected and some entries have no receipt
   document.getElementById('drive-warning').style.display=driveToken?'none':'block';
-
+  const tb=document.getElementById('log-body');
+  if(!fil.length){ tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">📋</div><p>No entries found.</p></div></td></tr>`; return; }
   tb.innerHTML=fil.map(e=>{
-    let receiptCell='<span style="color:var(--text-light);font-size:11px;">—</span>';
-    if(e.receiptViewLink){
-      receiptCell=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️ Drive</a>`;
-    } else if(e.receiptLocal){
-      receiptCell=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷 View</button>`;
-    }
-    const vatDisp=e.type==='Expense'&&e.vatAmt>0
-      ?`<span class="badge badge-vat">£${e.vatAmt.toFixed(2)}</span>`
-      :`<span style="color:var(--text-light);font-size:11px;">${e.type==='Expense'?'Exempt':'—'}</span>`;
-    return `<tr>
+    let rc='<span style="color:var(--text-light);font-size:11px;">—</span>';
+    if(e.receiptViewLink) rc=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️ Drive</a>`;
+    else if(e.receiptLocal) rc=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷 View</button>`;
+    const vd=e.type==='Expense'&&e.vatAmt>0?`<span class="badge badge-vat">£${e.vatAmt.toFixed(2)}</span>`:`<span style="color:var(--text-light);font-size:11px;">${e.type==='Expense'?'Exempt':'—'}</span>`;
+    return`<tr>
       <td style="white-space:nowrap;">${fmtDate(e.date)}</td>
       <td>${esc(e.staff)}</td>
       <td style="font-size:11px;">${esc(e.prop)}</td>
@@ -1032,8 +1022,7 @@ function renderLog(){
       <td><span class="badge badge-cat">${esc(e.cat)}</span></td>
       <td style="max-width:190px;font-size:12px;color:var(--text-mid);">${esc(e.desc)}</td>
       <td class="${e.type==='Income'?'amount-income':'amount-expense'}" style="white-space:nowrap;">${e.type==='Income'?'+':'-'}£${(e.amount||0).toFixed(2)}</td>
-      <td>${vatDisp}</td>
-      <td>${receiptCell}</td>
+      <td>${vd}</td><td>${rc}</td>
       <td style="font-size:11px;color:var(--text-light);">${esc(e.evref||'')}</td>
       <td><button class="delete-btn" onclick="deleteEntry(${e.id})">✕</button></td>
     </tr>`;
@@ -1042,15 +1031,11 @@ function renderLog(){
 }
 
 function populateCatFilter(){
-  const sel=document.getElementById('fil-cat');
-  const cur=sel.value;
+  const sel=document.getElementById('fil-cat'); const cur=sel.value;
   const cats=[...new Set(entries.map(e=>e.cat))].sort();
   sel.innerHTML='<option value="">All Categories</option>'+cats.map(c=>`<option value="${c}"${c===cur?' selected':''}>${c}</option>`).join('');
 }
-function clearFilters(){
-  ['fil-month','fil-type','fil-cat'].forEach(id=>document.getElementById(id).value='');
-  renderLog();
-}
+function clearFilters(){ ['fil-month','fil-type','fil-cat'].forEach(id=>document.getElementById(id).value=''); renderLog(); }
 function filterProp(prop){
   activeProp=prop;
   document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('active'));
@@ -1060,10 +1045,7 @@ function filterProp(prop){
 }
 function updateSidebar(){
   const month=new Date().toISOString().slice(0,7);
-  const fil=entries.filter(e=>{
-    if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp)) return false;
-    return e.date.startsWith(month);
-  });
+  const fil=entries.filter(e=>{ if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp)) return false; return e.date.startsWith(month); });
   const inc=fil.filter(e=>e.type==='Income').reduce((a,e)=>a+(e.amount||0),0);
   const exp=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.amount||0),0);
   const vat=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -1076,42 +1058,35 @@ function updateSidebar(){
   document.getElementById('sb-vat').textContent='£'+vat.toFixed(2);
 }
 
-/* ═══════════════════════════════
-   VAT RETURNS
-═══════════════════════════════ */
+/* ═══════════════ VAT PANEL ═══════════════ */
 function quarterOf(d){ const m=parseInt(d.slice(5,7)); return m<=3?'Q1':m<=6?'Q2':m<=9?'Q3':'Q4'; }
-function quarterMonths(q){ return {Q1:[1,2,3],Q2:[4,5,6],Q3:[7,8,9],Q4:[10,11,12]}[q]; }
-
+function quarterMonths(q){ return{Q1:[1,2,3],Q2:[4,5,6],Q3:[7,8,9],Q4:[10,11,12]}[q]; }
 function renderVat(){
   const year=parseInt(document.getElementById('vat-year').value)||new Date().getFullYear();
   const fp=document.getElementById('vat-prop').value;
   const ve=entries.filter(e=>e.date.startsWith(String(year))&&(!fp||e.prop.startsWith(fp))&&e.type==='Expense'&&(e.vatAmt||0)>0);
-
+  const ends={Q1:'31 Mar',Q2:'30 Jun',Q3:'30 Sep',Q4:'31 Dec'};
   document.getElementById('vat-quarter-cards').innerHTML=['Q1','Q2','Q3','Q4'].map(q=>{
-    const ms=quarterMonths(q);
-    const qe=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7))));
+    const ms=quarterMonths(q); const qe=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7))));
     const gross=qe.reduce((a,e)=>a+(e.amount||0),0);
     const net=qe.reduce((a,e)=>a+(e.netAmt||0),0);
     const vat=qe.reduce((a,e)=>a+(e.vatAmt||0),0);
-    const withReceipt=qe.filter(e=>e.receiptFileId||e.receiptLocal).length;
-    const ends={Q1:'31 Mar',Q2:'30 Jun',Q3:'30 Sep',Q4:'31 Dec'};
-    return `<div class="vat-q-card">
-      <div class="vat-q-title">${q} ${year} — ends ${ends[q]}</div>
+    const wr=qe.filter(e=>e.receiptFileId||e.receiptLocal).length;
+    return`<div class="vat-q-card"><div class="vat-q-title">${q} ${year} — ends ${ends[q]}</div>
       <div class="vat-q-row"><span class="vl">Transactions</span><span class="vv">${qe.length}</span></div>
       <div class="vat-q-row"><span class="vl">Gross Spend</span><span class="vv">£${gross.toFixed(2)}</span></div>
       <div class="vat-q-row"><span class="vl">Net (ex-VAT)</span><span class="vv">£${net.toFixed(2)}</span></div>
-      <div class="vat-q-row"><span class="vl">Receipts</span><span class="vv">${withReceipt}/${qe.length}</span></div>
-      <div class="vat-q-row"><span class="vl" style="font-weight:700;">VAT Reclaimable</span><span class="vv" style="color:var(--purple);font-size:15px;">£${vat.toFixed(2)}</span></div>
+      <div class="vat-q-row"><span class="vl">Receipts</span><span class="vv">${wr}/${qe.length}</span></div>
+      <div class="vat-q-row"><span class="vl" style="font-weight:700;">VAT Reclaimable</span><span class="vv" style="font-size:15px;">£${vat.toFixed(2)}</span></div>
     </div>`;
   }).join('');
-
   const tb=document.getElementById('vat-detail-body');
   if(!ve.length){ tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">🧾</div><p>No VAT entries for ${year}.</p></div></td></tr>`; return; }
   tb.innerHTML=[...ve].sort((a,b)=>a.date.localeCompare(b.date)).map(e=>{
-    let rCell='—';
-    if(e.receiptViewLink) rCell=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️</a>`;
-    else if(e.receiptLocal) rCell=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷</button>`;
-    return `<tr>
+    let rc='—';
+    if(e.receiptViewLink) rc=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️</a>`;
+    else if(e.receiptLocal) rc=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷</button>`;
+    return`<tr>
       <td style="white-space:nowrap;">${fmtDate(e.date)}</td>
       <td><span class="badge badge-vat">${quarterOf(e.date)}</span></td>
       <td style="font-size:11px;">${esc(e.prop)}</td>
@@ -1122,39 +1097,29 @@ function renderVat(){
       <td><span class="badge badge-vat">${getVatLabel(e.vatRate||'')}</span></td>
       <td style="color:var(--purple);font-weight:700;">£${(e.vatAmt||0).toFixed(2)}</td>
       <td style="font-size:11px;">${esc(e.evref||'')}</td>
-      <td>${rCell}</td>
+      <td>${rc}</td>
     </tr>`;
   }).join('');
 }
-
 function exportVatCSV(period){
   const year=parseInt(document.getElementById('vat-year').value)||new Date().getFullYear();
   const fp=document.getElementById('vat-prop').value;
   let ve=entries.filter(e=>e.date.startsWith(String(year))&&(!fp||e.prop.startsWith(fp))&&e.type==='Expense'&&(e.vatAmt||0)>0);
   if(period!=='ALL'){ const ms=quarterMonths(period); ve=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7)))); }
   ve=[...ve].sort((a,b)=>a.date.localeCompare(b.date));
-  const tG=ve.reduce((a,e)=>a+(e.amount||0),0);
-  const tN=ve.reduce((a,e)=>a+(e.netAmt||0),0);
-  const tV=ve.reduce((a,e)=>a+(e.vatAmt||0),0);
-  const pLabel=period==='ALL'?`Full Year ${year}`:`${period} ${year}`;
-  const lines=[
-    `GOLDCREST PROPERTY AND SERVICES LIMITED — VAT Return: ${pLabel}`,
-    `Generated: ${new Date().toLocaleString('en-GB')}`,
-    `Property: ${fp||'All Properties'}`,``,
+  const tG=ve.reduce((a,e)=>a+(e.amount||0),0),tN=ve.reduce((a,e)=>a+(e.netAmt||0),0),tV=ve.reduce((a,e)=>a+(e.vatAmt||0),0);
+  const pl=period==='ALL'?`Full Year ${year}`:`${period} ${year}`;
+  const lines=[`GOLDCREST PROPERTY AND SERVICES LIMITED — VAT Return: ${pl}`,`Generated: ${new Date().toLocaleString('en-GB')}`,`Property: ${fp||'All Properties'}`,``,
     `Date,Quarter,Property,Category,Description,Gross(£),Net ex-VAT(£),VAT Rate,VAT Amount(£),Invoice Ref,Receipt,Drive Link`,
     ...ve.map(e=>[e.date,quarterOf(e.date),`"${e.prop}"`,`"${e.cat}"`,`"${(e.desc||'').replace(/"/g,'""')}"`,
       (e.amount||0).toFixed(2),(e.netAmt||0).toFixed(2),getVatLabel(e.vatRate||''),(e.vatAmt||0).toFixed(2),
-      `"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',
-      e.receiptViewLink||''].join(',')),
-    ``,`TOTALS,,,,,${tG.toFixed(2)},${tN.toFixed(2)},,${tV.toFixed(2)},,,`
-  ];
-  dlCSV(lines.join('\n'),`Goldcrest_VAT_${pLabel.replace(/ /g,'_')}_${today()}.csv`);
+      `"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',e.receiptViewLink||''].join(',')),
+    ``,`TOTALS,,,,,${tG.toFixed(2)},${tN.toFixed(2)},,${tV.toFixed(2)},,,`];
+  dlCSV(lines.join('\n'),`Goldcrest_VAT_${pl.replace(/ /g,'_')}_${today()}.csv`);
   toast(`VAT CSV — ${ve.length} transactions · £${tV.toFixed(2)} VAT`);
 }
 
-/* ═══════════════════════════════
-   FINANCIALS
-═══════════════════════════════ */
+/* ═══════════════ FINANCIALS ═══════════════ */
 function renderFinancials(){
   const year=parseInt(document.getElementById('fin-year').value)||new Date().getFullYear();
   const fp=document.getElementById('fin-prop').value;
@@ -1162,8 +1127,7 @@ function renderFinancials(){
   const tI=fil.filter(e=>e.type==='Income').reduce((a,e)=>a+(e.amount||0),0);
   const tE=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.amount||0),0);
   const tV=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.vatAmt||0),0);
-  const net=tI-tE;
-  const tM=fil.reduce((a,e)=>a+(e.mins||0),0);
+  const net=tI-tE,tM=fil.reduce((a,e)=>a+(e.mins||0),0);
   document.getElementById('fin-summary-cards').innerHTML=`
     <div class="sum-card income"><div class="sum-card-label">Total Income</div><div class="sum-card-val">£${tI.toFixed(2)}</div><div class="sum-card-sub">${year}</div></div>
     <div class="sum-card expense"><div class="sum-card-label">Total Expenses</div><div class="sum-card-val">£${tE.toFixed(2)}</div><div class="sum-card-sub">${year}</div></div>
@@ -1174,8 +1138,7 @@ function renderFinancials(){
   let rows='';
   months.forEach((m,i)=>{
     const ms=`${year}-${String(i+1).padStart(2,'0')}`;
-    const me=fil.filter(e=>e.date.startsWith(ms));
-    if(!me.length) return;
+    const me=fil.filter(e=>e.date.startsWith(ms)); if(!me.length) return;
     const inc=me.filter(e=>e.type==='Income').reduce((a,e)=>a+(e.amount||0),0);
     const exp=me.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.amount||0),0);
     const vat=me.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -1188,56 +1151,49 @@ function renderFinancials(){
   document.getElementById('cat-body').innerHTML=Object.values(catMap).sort((a,b)=>b.total-a.total).map(c=>`<tr><td>${esc(c.cat)}</td><td><span class="badge ${c.type==='Income'?'badge-income':'badge-expense'}">${c.type}</span></td><td class="${c.type==='Income'?'amount-income':'amount-expense'}">£${c.total.toFixed(2)}</td><td style="color:var(--purple);">£${c.vat.toFixed(2)}</td><td style="text-align:center;">${c.count}</td></tr>`).join('')||`<tr><td colspan="5"><div class="empty-state"><p>No data.</p></div></td></tr>`;
 }
 
-/* ═══════════════════════════════
-   EXPORT
-═══════════════════════════════ */
+/* ═══════════════ EXPORT ═══════════════ */
 function exportCSV(){
   const hdr=['GOLDCREST PROPERTY AND SERVICES LIMITED — Operations Log','Exported: '+new Date().toLocaleString('en-GB'),'',
     ['Date','Staff','Property','Type','Category','Description','Gross(£)','Net(£)','VAT Rate','VAT(£)','Mins','Ref','Receipt','Drive Link'].join(',')];
   const rows=[...entries].sort((a,b)=>a.date.localeCompare(b.date)).map(e=>
     [e.date,`"${e.staff}"`,`"${e.prop}"`,e.type,`"${e.cat}"`,`"${(e.desc||'').replace(/"/g,'""')}"`,
      (e.amount||0).toFixed(2),(e.netAmt||0).toFixed(2),getVatLabel(e.vatRate||''),(e.vatAmt||0).toFixed(2),
-     e.mins||0,`"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',
-     e.receiptViewLink||''].join(','));
+     e.mins||0,`"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',e.receiptViewLink||''].join(','));
   dlCSV([...hdr,...rows].join('\n'),'Goldcrest_Operations_Log_'+today()+'.csv');
   toast('CSV exported');
 }
 function dlCSV(content,filename){
   const b=new Blob([content],{type:'text/csv'});
-  const u=URL.createObjectURL(b);
-  const a=document.createElement('a');
-  a.href=u; a.download=filename; a.click();
-  URL.revokeObjectURL(u);
+  const u=URL.createObjectURL(b); const a=document.createElement('a');
+  a.href=u; a.download=filename; a.click(); URL.revokeObjectURL(u);
 }
 
-/* ═══════════════════════════════
-   TIMER
-═══════════════════════════════ */
-let tInterval=null,tStart=null,tEnd=null,tElapsed=0;
+/* ═══════════════ TIMER ═══════════════ */
+let tI=null,tS=null,tE=null,tEl=0;
 function pad(n){return String(n).padStart(2,'0');}
 function fmtEl(ms){const s=Math.floor(ms/1000);return`${pad(Math.floor(s/3600))}:${pad(Math.floor((s%3600)/60))}:${pad(s%60)}`;}
 function startTimer(){
-  tStart=new Date();
-  tInterval=setInterval(()=>{
-    tElapsed=Date.now()-tStart;
-    document.getElementById('timer-display').textContent=fmtEl(tElapsed);
+  tS=new Date();
+  tI=setInterval(()=>{
+    tEl=Date.now()-tS;
+    document.getElementById('timer-display').textContent=fmtEl(tEl);
     document.getElementById('timer-display').className='timer-digits running';
-    const mins=tElapsed/60000, rate=parseFloat(document.getElementById('t-rate').value)||35;
+    const mins=tEl/60000,rate=parseFloat(document.getElementById('t-rate').value)||35;
     document.getElementById('timer-fee').textContent=mins>0?'Fee: £'+((mins/60)*rate).toFixed(2):'';
-    document.getElementById('timer-meta').textContent='Started: '+tStart.toLocaleTimeString('en-GB');
+    document.getElementById('timer-meta').textContent='Started: '+tS.toLocaleTimeString('en-GB');
   },1000);
   document.getElementById('timer-start-btn').style.display='none';
   document.getElementById('timer-stop-btn').style.display='inline-flex';
 }
 function stopTimer(){
-  tEnd=new Date(); clearInterval(tInterval); tInterval=null;
+  tE=new Date(); clearInterval(tI); tI=null;
   document.getElementById('timer-stop-btn').style.display='none';
   document.getElementById('timer-reset-btn').style.display='inline-flex';
-  document.getElementById('timer-meta').textContent=tStart.toLocaleTimeString('en-GB')+' – '+tEnd.toLocaleTimeString('en-GB');
+  document.getElementById('timer-meta').textContent=tS.toLocaleTimeString('en-GB')+' – '+tE.toLocaleTimeString('en-GB');
   document.getElementById('timer-prefill-area').style.display='block';
 }
 function resetTimer(){
-  clearInterval(tInterval); tInterval=null; tStart=null; tEnd=null; tElapsed=0;
+  clearInterval(tI); tI=null; tS=null; tE=null; tEl=0;
   document.getElementById('timer-display').textContent='00:00:00';
   document.getElementById('timer-display').className='timer-digits';
   document.getElementById('timer-meta').textContent='Timer stopped';
@@ -1247,63 +1203,96 @@ function resetTimer(){
   document.getElementById('timer-reset-btn').style.display='none';
 }
 function saveTimerEntry(){
-  if(!tStart||!tEnd){toast('No completed session');return;}
+  if(!tS||!tE){toast('No completed session');return;}
   const desc=document.getElementById('t-desc').value.trim();
   if(!desc){toast('Add a description');return;}
-  const mins=Math.round((tEnd-tStart)/60000);
+  const mins=Math.round((tE-tS)/60000);
   const rate=parseFloat(document.getElementById('t-rate').value)||35;
   const fee=parseFloat(((mins/60)*rate).toFixed(2));
-  entries.unshift({id:nextId++,date:tStart.toISOString().slice(0,10),
+  entries.unshift({id:nextId++,date:tS.toISOString().slice(0,10),
     staff:document.getElementById('t-staff').value,prop:document.getElementById('t-prop').value,
     type:'Expense',cat:document.getElementById('t-cat').value,
     amount:fee,netAmt:fee,vatAmt:0,vatRate:'exempt',mins,
-    evref:'TIMER-'+tStart.toISOString().slice(0,16).replace('T','-'),
+    evref:'TIMER-'+tS.toISOString().slice(0,16).replace('T','-'),
     desc,receiptFileId:null,receiptLocal:null,receiptViewLink:null});
-  save(); resetTimer(); document.getElementById('t-desc').value='';
+  scheduleDriveSave(); resetTimer(); document.getElementById('t-desc').value='';
   renderLog(); updateSidebar();
   toast('Session saved — '+mins+' mins / £'+fee.toFixed(2));
 }
 
-/* ═══════════════════════════════
-   STAFF
-═══════════════════════════════ */
+/* ═══════════════ STAFF ═══════════════ */
 function populateStaffDropdowns(){
   ['f-staff','t-staff'].forEach(id=>{
-    const sel=document.getElementById(id); if(!sel)return;
+    const sel=document.getElementById(id); if(!sel) return;
     const cur=sel.value;
     sel.innerHTML=staff.map(s=>`<option value="${esc(s.name)}">${esc(s.name)} — ${esc(s.role)}</option>`).join('');
     if(cur) sel.value=cur;
   });
   document.getElementById('staff-pills').innerHTML=staff.map(s=>`<span class="staff-pill"><span class="dot"></span>${esc(s.name)}</span>`).join('');
 }
+
 function addStaff(){
   const name=document.getElementById('s-name').value.trim();
   const role=document.getElementById('s-role').value.trim()||'Staff';
   if(!name){toast('Enter a name');return;}
   if(staff.find(s=>s.name.toLowerCase()===name.toLowerCase())){toast('Already exists');return;}
   staff.push({id:Math.max(0,...staff.map(s=>s.id))+1,name,role});
-  save(); populateStaffDropdowns(); renderStaffPanel();
+  scheduleDriveSave(); populateStaffDropdowns(); renderStaffPanel();
   document.getElementById('s-name').value=''; document.getElementById('s-role').value='';
   toast(name+' added');
 }
+
+function openEditModal(id){
+  const s=staff.find(x=>x.id===id); if(!s) return;
+  document.getElementById('edit-staff-id').value=id;
+  document.getElementById('edit-staff-name').value=s.name;
+  document.getElementById('edit-staff-role').value=s.role;
+  document.getElementById('edit-modal').classList.add('open');
+}
+
+function closeEditModal(){
+  document.getElementById('edit-modal').classList.remove('open');
+}
+
+function saveStaffEdit(){
+  const id=parseInt(document.getElementById('edit-staff-id').value);
+  const name=document.getElementById('edit-staff-name').value.trim();
+  const role=document.getElementById('edit-staff-role').value.trim()||'Staff';
+  if(!name){toast('Enter a name');return;}
+  const idx=staff.findIndex(s=>s.id===id); if(idx===-1) return;
+  staff[idx]={...staff[idx],name,role};
+  scheduleDriveSave(); populateStaffDropdowns(); renderStaffPanel();
+  closeEditModal();
+  toast('Staff member updated — syncing to all devices');
+}
+
 function removeStaff(id){
   const s=staff.find(x=>x.id===id);
   if(!confirm('Remove '+(s?s.name:'this person')+'?'))return;
   staff=staff.filter(x=>x.id!==id);
-  save(); populateStaffDropdowns(); renderStaffPanel(); toast('Removed');
-}
-function renderStaffPanel(){
-  const el=document.getElementById('staff-list');
-  el.innerHTML=staff.length?staff.map(s=>`<div class="staff-row"><div><span class="staff-name">${esc(s.name)}</span><br><span class="staff-role">${esc(s.role)}</span></div><button class="btn btn-danger" onclick="removeStaff(${s.id})" style="padding:6px 14px;font-size:11px;">Remove</button></div>`).join(''):'<div class="empty-state"><p>No staff added yet.</p></div>';
+  scheduleDriveSave(); populateStaffDropdowns(); renderStaffPanel(); toast('Removed');
 }
 
-/* ═══════════════════════════════
-   YEAR DROPDOWNS
-═══════════════════════════════ */
+function renderStaffPanel(){
+  const el=document.getElementById('staff-list');
+  el.innerHTML=staff.length?staff.map(s=>`
+    <div class="staff-row">
+      <div class="staff-info">
+        <span class="staff-name">${esc(s.name)}</span>
+        <span class="staff-role">${esc(s.role)}</span>
+      </div>
+      <div class="staff-actions">
+        <button class="btn btn-edit" onclick="openEditModal(${s.id})">Edit</button>
+        <button class="btn btn-danger" onclick="removeStaff(${s.id})" style="padding:6px 14px;font-size:11px;">Remove</button>
+      </div>
+    </div>`).join(''):'<div class="empty-state"><p>No staff added yet.</p></div>';
+}
+
+/* ═══════════════ YEAR DROPDOWNS ═══════════════ */
 function populateYearDropdowns(){
   const cur=new Date().getFullYear();
   ['fin-year','vat-year'].forEach(id=>{
-    const sel=document.getElementById(id); if(!sel)return;
+    const sel=document.getElementById(id); if(!sel) return;
     sel.innerHTML='';
     for(let y=cur+1;y>=2022;y--){
       const o=document.createElement('option');
@@ -1313,9 +1302,7 @@ function populateYearDropdowns(){
   });
 }
 
-/* ═══════════════════════════════
-   TABS
-═══════════════════════════════ */
+/* ═══════════════ TABS ═══════════════ */
 function switchTab(tab,btn){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
@@ -1326,9 +1313,14 @@ function switchTab(tab,btn){
   if(tab==='staff') renderStaffPanel();
 }
 
-/* ═══════════════════════════════
-   UTILS
-═══════════════════════════════ */
+/* ═══════════════ REFRESH ALL UI ═══════════════ */
+function refreshAllUI(){
+  populateStaffDropdowns();
+  renderLog();
+  updateSidebar();
+}
+
+/* ═══════════════ UTILS ═══════════════ */
 function tick(){
   const n=new Date();
   document.getElementById('clock-time').textContent=n.toLocaleTimeString('en-GB');
@@ -1336,7 +1328,8 @@ function tick(){
 }
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function fmtDate(d){
-  if(!d)return'';const[y,m,day]=d.split('-');
+  if(!d) return'';
+  const[y,m,day]=d.split('-');
   return`${parseInt(day)} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][parseInt(m)-1]} ${y}`;
 }
 function toast(msg){
@@ -1345,10 +1338,8 @@ function toast(msg){
   setTimeout(()=>t.classList.remove('show'),3200);
 }
 
-/* ═══════════════════════════════
-   INIT
-═══════════════════════════════ */
-load();
+/* ═══════════════ INIT ═══════════════ */
+loadLocal();
 setInterval(tick,1000); tick();
 document.getElementById('f-date').value=today();
 populateStaffDropdowns();
@@ -1356,8 +1347,19 @@ populateYearDropdowns();
 renderLog();
 updateSidebar();
 updateDriveSidebar();
-if(driveToken) setDriveStatus('connected','Drive Connected');
-else document.getElementById('drive-warning').style.display='block';
+
+if(driveToken){
+  setDriveStatus('connected','Drive Connected');
+  document.getElementById('sync-btn').style.display='inline-flex';
+  document.getElementById('drive-warning').style.display='none';
+  // Auto-sync on load when already connected
+  syncFromDrive();
+} else {
+  document.getElementById('drive-warning').style.display='block';
+}
+
+// Auto-sync every 5 minutes if connected
+setInterval(()=>{ if(driveToken) syncFromDrive(); }, 5*60*1000);
 </script>
 </body>
 </html>
