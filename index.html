@@ -73,8 +73,23 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .form-input,.form-select,.form-textarea{border:1px solid var(--border);border-radius:5px;padding:9px 12px;font-family:'Source Sans 3',sans-serif;font-size:13px;color:var(--text);background:var(--cream);transition:border-color 0.2s,box-shadow 0.2s;outline:none;width:100%;}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12);background:#fff;}
 .form-textarea{resize:vertical;min-height:68px;}
+
+/* SUPPLIER ROW */
+.supplier-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;background:#F7F4EE;border:1px solid var(--border);border-radius:6px;padding:12px 14px;}
+.supplier-row-header{grid-column:1/-1;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--brown-mid);margin-bottom:4px;}
+.supplier-new-row{display:none;grid-column:1/-1;margin-top:4px;}
+.supplier-new-row.show{display:flex;gap:8px;align-items:center;}
+
+/* DATE PAIR */
+.date-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;background:#EFF4F0;border:1px solid #B8D4BC;border-radius:6px;padding:12px 14px;}
+.date-pair-header{grid-column:1/-1;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
+.entry-date-note{font-size:10px;color:var(--text-light);margin-top:3px;font-style:italic;}
+
+/* VAT ROW */
 .vat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;background:var(--purple-pale);border:1px solid #c8a8e8;border-radius:6px;padding:12px 14px;}
 .vat-label-header{grid-column:1/-1;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:4px;}
+
+/* RECEIPT */
 .receipt-zone{border:2px dashed var(--border);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--cream);position:relative;overflow:hidden;}
 .receipt-zone:hover,.receipt-zone.drag-over{border-color:var(--gold);background:var(--gold-pale);}
 .receipt-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
@@ -91,6 +106,8 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .upload-bar{height:100%;background:var(--gold);border-radius:20px;width:0%;transition:width 0.3s;}
 .upload-label{font-size:11px;color:var(--text-mid);}
 .drive-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--blue);text-decoration:none;margin-top:6px;padding:4px 10px;background:var(--blue-pale);border-radius:12px;}
+
+/* BUTTONS */
 .btn{padding:10px 20px;border:none;border-radius:5px;font-family:'Source Sans 3',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.18s;display:inline-flex;align-items:center;gap:7px;}
 .btn-primary{background:var(--gold);color:var(--brown);}
 .btn-primary:hover{background:var(--gold-dark);color:#fff;}
@@ -104,8 +121,11 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .btn-purple:hover{background:var(--purple);color:#fff;}
 .btn-edit{background:var(--blue-pale);color:var(--blue);border:1px solid #a0c0e0;padding:6px 14px;font-size:11px;}
 .btn-edit:hover{background:var(--blue);color:#fff;}
+.btn-sm{padding:6px 12px;font-size:11px;}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
 .btn:disabled{opacity:0.5;cursor:not-allowed;}
+
+/* TABLE */
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:6px;}
 .filter-bar .form-input,.filter-bar .form-select{font-size:12px;padding:7px 10px;min-width:120px;}
 .filter-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);white-space:nowrap;}
@@ -128,10 +148,18 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 .thumb-btn{background:none;border:1px solid var(--border);border-radius:4px;cursor:pointer;padding:3px 8px;font-size:10px;color:var(--text-mid);transition:all 0.15s;white-space:nowrap;text-decoration:none;display:inline-block;}
 .thumb-btn:hover{background:var(--gold-pale);border-color:var(--gold);}
 .thumb-btn.has-img{border-color:var(--gold);color:var(--gold-dark);font-weight:700;}
+.date-cell{display:flex;flex-direction:column;gap:2px;}
+.date-main{font-weight:600;white-space:nowrap;}
+.date-logged{font-size:10px;color:var(--text-light);white-space:nowrap;}
+.supplier-cell{font-size:12px;color:var(--brown-mid);font-weight:600;}
+
+/* LIGHTBOX */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
 .lightbox.open{display:flex;}
 .lightbox img{max-width:92vw;max-height:82vh;border-radius:8px;border:3px solid var(--gold);}
 .lightbox-close{background:var(--gold);color:var(--brown);border:none;border-radius:20px;padding:8px 24px;font-weight:700;font-size:13px;cursor:pointer;}
+
+/* SUMMARY */
 .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-bottom:24px;}
 .sum-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px;box-shadow:var(--shadow);border-top:4px solid var(--border);}
 .sum-card.income{border-top-color:var(--green);}
@@ -147,6 +175,8 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 .sum-card.hours .sum-card-val{color:var(--blue);}
 .sum-card.vat .sum-card-val{color:var(--purple);}
 .sum-card-sub{font-size:11px;color:var(--text-light);margin-top:4px;}
+
+/* VAT PANEL */
 .vat-quarter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px;}
 .vat-q-card{background:#fff;border:1px solid #c8a8e8;border-radius:8px;padding:16px;box-shadow:var(--shadow);}
 .vat-q-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-bottom:10px;}
@@ -154,17 +184,23 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 .vat-q-row:last-child{border-bottom:none;padding-top:8px;}
 .vat-q-row .vl{color:var(--text-mid);}
 .vat-q-row .vv{color:var(--purple);font-weight:600;}
+
+/* TIMER */
 .timer-display{text-align:center;padding:24px 0 16px;}
 .timer-digits{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:var(--brown);letter-spacing:4px;line-height:1;}
 .timer-digits.running{color:var(--gold-dark);}
 .timer-meta{font-size:12px;color:var(--text-light);margin-top:10px;letter-spacing:1px;}
 .timer-fee{font-size:20px;font-weight:700;color:var(--green);margin-top:8px;}
+
+/* STAFF */
 .staff-list{display:flex;flex-direction:column;gap:8px;}
 .staff-row{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px 14px;gap:10px;}
 .staff-info{display:flex;flex-direction:column;flex:1;}
 .staff-name{font-weight:700;font-size:13px;color:var(--brown);}
 .staff-role{font-size:11px;color:var(--text-light);}
 .staff-actions{display:flex;gap:6px;flex-shrink:0;}
+
+/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
 .modal-box{background:#fff;border-radius:10px;padding:28px;width:90%;max-width:400px;box-shadow:var(--shadow-lg);}
@@ -180,6 +216,8 @@ tbody td{padding:9px 12px;vertical-align:middle;}
   .timer-digits{font-size:38px;}
   .vat-row{grid-template-columns:1fr 1fr;}
   .form-grid{grid-template-columns:1fr 1fr;}
+  .date-pair{grid-template-columns:1fr 1fr;}
+  .supplier-row{grid-template-columns:1fr;}
   .topbar{padding:0 12px;}
   .brand-name{font-size:14px;}
   .brand-sub{display:none;}
@@ -206,8 +244,7 @@ tbody td{padding:9px 12px;vertical-align:middle;}
   </div>
   <div class="topbar-right">
     <button class="drive-status disconnected" id="drive-btn" onclick="handleDriveAuth()">
-      <span class="drive-dot"></span>
-      <span id="drive-label">Connect Drive</span>
+      <span class="drive-dot"></span><span id="drive-label">Connect Drive</span>
     </button>
     <div class="topbar-clock">
       <span class="time-big" id="clock-time">--:--:--</span>
@@ -231,16 +268,13 @@ tbody td{padding:9px 12px;vertical-align:middle;}
     <div>
       <div class="sidebar-label">Properties</div>
       <div class="prop-card active" id="prop-all" onclick="filterProp('ALL')">
-        <div class="prop-id">All Properties</div>
-        <div class="prop-addr">Combined View</div>
+        <div class="prop-id">All Properties</div><div class="prop-addr">Combined View</div>
       </div>
       <div class="prop-card" id="prop-1" onclick="filterProp('160 Wycliffe')">
-        <div class="prop-id">Property 1</div>
-        <div class="prop-addr">160 Wycliffe Road, Northampton NN1 5JH</div>
+        <div class="prop-id">Property 1</div><div class="prop-addr">160 Wycliffe Road, Northampton NN1 5JH</div>
       </div>
       <div class="prop-card" id="prop-2" onclick="filterProp('14 Calder')">
-        <div class="prop-id">Property 2</div>
-        <div class="prop-addr">14 Calder Green, Northampton NN5 7JB</div>
+        <div class="prop-id">Property 2</div><div class="prop-addr">14 Calder Green, Northampton NN5 7JB</div>
       </div>
     </div>
     <div>
@@ -262,18 +296,53 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 
   <div class="content">
 
-    <!-- LOG -->
+    <!-- LOG PANEL -->
     <div class="panel active" id="panel-log">
       <div id="drive-warning" class="warn-box" style="display:none;">
-        ⚠️ <strong>Google Drive not connected.</strong> Data is stored locally on this device only. Connect Drive to sync entries, staff and receipts across all devices.
+        ⚠️ <strong>Google Drive not connected.</strong> Data is stored locally on this device only. Connect Drive to sync across all devices.
       </div>
+
       <div class="form-card">
         <div class="form-card-title">New Entry</div>
-        <div class="form-grid">
+
+        <!-- DATE PAIR -->
+        <div class="date-pair">
+          <div class="date-pair-header">📅 Dates</div>
           <div class="form-group">
-            <label class="form-label">Date <span class="req">*</span></label>
-            <input type="date" class="form-input" id="f-date">
+            <label class="form-label">Transaction Date <span class="req">*</span></label>
+            <input type="date" class="form-input" id="f-txdate">
+            <span class="entry-date-note">Date on receipt / invoice</span>
           </div>
+          <div class="form-group">
+            <label class="form-label">Entry Date</label>
+            <input type="date" class="form-input" id="f-entrydate" readonly style="background:var(--cream-mid);color:var(--text-light);cursor:default;">
+            <span class="entry-date-note">Auto-set to today</span>
+          </div>
+        </div>
+
+        <!-- SUPPLIER -->
+        <div class="supplier-row">
+          <div class="supplier-row-header">🏪 Supplier / Payee</div>
+          <div class="form-group">
+            <label class="form-label">Select Supplier</label>
+            <select class="form-select" id="f-supplier-select" onchange="onSupplierSelect()">
+              <option value="">— Select or add new —</option>
+              <option value="__new__">+ Add new supplier...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Invoice / Receipt Date</label>
+            <input type="date" class="form-input" id="f-invoicedate">
+            <span class="entry-date-note">Date printed on document (if different)</span>
+          </div>
+          <div class="supplier-new-row" id="supplier-new-row">
+            <input type="text" class="form-input" id="f-supplier-new" placeholder="Type supplier name..." style="flex:1;">
+            <button class="btn btn-primary btn-sm" onclick="addSupplierFromField()">Add</button>
+            <button class="btn btn-secondary btn-sm" onclick="cancelNewSupplier()">Cancel</button>
+          </div>
+        </div>
+
+        <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Staff Member</label>
             <select class="form-select" id="f-staff"></select>
@@ -297,28 +366,14 @@ tbody td{padding:9px 12px;vertical-align:middle;}
           <div class="form-group">
             <label class="form-label">Category</label>
             <select class="form-select" id="f-cat">
-              <option>Maintenance</option>
-              <option>Repairs</option>
-              <option>Inspection</option>
-              <option>Contractor</option>
-              <option>Insurance</option>
-              <option>Utilities</option>
-              <option>Mortgage</option>
-              <option>Finance</option>
-              <option>Lease Payment</option>
-              <option>Management Fee</option>
-              <option>Legal / Professional</option>
-              <option>Letting / Advertising</option>
-              <option>Council Tax</option>
-              <option>Ground Rent</option>
-              <option>Service Charge</option>
-              <option>Cleaning</option>
-              <option>Administration</option>
-              <option>Rent</option>
-              <option>Rental Income</option>
-              <option>Motor Expenses</option>
-              <option>Sundry Expenses</option>
-              <option>Other</option>
+              <option>Maintenance</option><option>Repairs</option><option>Inspection</option>
+              <option>Contractor</option><option>Insurance</option><option>Utilities</option>
+              <option>Mortgage</option><option>Finance</option><option>Lease Payment</option>
+              <option>Management Fee</option><option>Legal / Professional</option>
+              <option>Letting / Advertising</option><option>Council Tax</option>
+              <option>Ground Rent</option><option>Service Charge</option><option>Cleaning</option>
+              <option>Administration</option><option>Rent</option><option>Rental Income</option>
+              <option>Motor Expenses</option><option>Sundry Expenses</option><option>Other</option>
             </select>
           </div>
           <div class="form-group">
@@ -338,6 +393,8 @@ tbody td{padding:9px 12px;vertical-align:middle;}
             <textarea class="form-textarea" id="f-desc" placeholder="Describe the activity in detail..."></textarea>
           </div>
         </div>
+
+        <!-- VAT -->
         <div id="vat-section">
           <div class="vat-row">
             <div class="vat-label-header">🧾 VAT Details</div>
@@ -361,6 +418,8 @@ tbody td{padding:9px 12px;vertical-align:middle;}
             </div>
           </div>
         </div>
+
+        <!-- RECEIPT -->
         <div class="form-group" style="margin-bottom:16px;">
           <label class="form-label">Receipt / Invoice Image</label>
           <div class="receipt-zone" id="receipt-zone" ondragover="onDragOver(event)" ondragleave="onDragLeave()" ondrop="onDrop(event)">
@@ -380,12 +439,14 @@ tbody td{padding:9px 12px;vertical-align:middle;}
           </div>
           <div id="drive-file-link"></div>
         </div>
+
         <div class="btn-row">
           <button class="btn btn-primary" id="save-btn" onclick="addEntry()">+ Add Entry</button>
           <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
         </div>
       </div>
 
+      <!-- FILTERS -->
       <div class="filter-bar">
         <span class="filter-label">Filter:</span>
         <input type="month" class="form-input" id="fil-month" onchange="renderLog()">
@@ -397,6 +458,9 @@ tbody td{padding:9px 12px;vertical-align:middle;}
         <select class="form-select" id="fil-cat" onchange="renderLog()">
           <option value="">All Categories</option>
         </select>
+        <select class="form-select" id="fil-supplier" onchange="renderLog()">
+          <option value="">All Suppliers</option>
+        </select>
         <button class="btn btn-secondary" onclick="clearFilters()">Clear</button>
         <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
           <button class="btn btn-green" onclick="syncFromDrive()" id="sync-btn" style="display:none;">↻ Sync Now</button>
@@ -407,14 +471,14 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       <div class="log-table-wrap">
         <table>
           <thead>
-            <tr><th>Date</th><th>Staff</th><th>Property</th><th>Type</th><th>Category</th><th>Description</th><th>Gross</th><th>VAT</th><th>Receipt</th><th>Ref</th><th></th></tr>
+            <tr><th>Tx Date</th><th>Supplier</th><th>Staff</th><th>Property</th><th>Type</th><th>Category</th><th>Description</th><th>Gross</th><th>VAT</th><th>Receipt</th><th>Ref</th><th></th></tr>
           </thead>
           <tbody id="log-body"></tbody>
         </table>
       </div>
     </div>
 
-    <!-- TIMER -->
+    <!-- TIMER PANEL -->
     <div class="panel" id="panel-timer">
       <div class="form-card">
         <div class="form-card-title">Activity Timer</div>
@@ -452,30 +516,15 @@ tbody td{padding:9px 12px;vertical-align:middle;}
             </div>
             <div class="form-group">
               <label class="form-label">Category</label>
-              <!-- TIMER CATEGORY LIST — keep in sync with main list above -->
               <select class="form-select" id="t-cat">
-                <option>Maintenance</option>
-                <option>Repairs</option>
-                <option>Inspection</option>
-                <option>Contractor</option>
-                <option>Insurance</option>
-                <option>Utilities</option>
-                <option>Mortgage</option>
-                <option>Finance</option>
-                <option>Lease Payment</option>
-                <option>Management Fee</option>
-                <option>Legal / Professional</option>
-                <option>Letting / Advertising</option>
-                <option>Council Tax</option>
-                <option>Ground Rent</option>
-                <option>Service Charge</option>
-                <option>Cleaning</option>
-                <option>Administration</option>
-                <option>Rent</option>
-                <option>Rental Income</option>
-                <option>Motor Expenses</option>
-                <option>Sundry Expenses</option>
-                <option>Other</option>
+                <option>Maintenance</option><option>Repairs</option><option>Inspection</option>
+                <option>Contractor</option><option>Insurance</option><option>Utilities</option>
+                <option>Mortgage</option><option>Finance</option><option>Lease Payment</option>
+                <option>Management Fee</option><option>Legal / Professional</option>
+                <option>Letting / Advertising</option><option>Council Tax</option>
+                <option>Ground Rent</option><option>Service Charge</option><option>Cleaning</option>
+                <option>Administration</option><option>Rent</option><option>Rental Income</option>
+                <option>Motor Expenses</option><option>Sundry Expenses</option><option>Other</option>
               </select>
             </div>
             <div class="form-group full">
@@ -490,7 +539,7 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       </div>
     </div>
 
-    <!-- VAT -->
+    <!-- VAT PANEL -->
     <div class="panel" id="panel-vat">
       <div class="form-card">
         <div class="form-card-title">VAT Returns</div>
@@ -521,14 +570,14 @@ tbody td{padding:9px 12px;vertical-align:middle;}
         <div class="form-card-title">VAT Transaction Detail</div>
         <div class="log-table-wrap">
           <table>
-            <thead><tr><th>Date</th><th>Qtr</th><th>Property</th><th>Category</th><th>Description</th><th>Gross (£)</th><th>Net (£)</th><th>Rate</th><th>VAT (£)</th><th>Ref</th><th>Receipt</th></tr></thead>
+            <thead><tr><th>Tx Date</th><th>Logged</th><th>Supplier</th><th>Qtr</th><th>Property</th><th>Category</th><th>Description</th><th>Gross (£)</th><th>Net (£)</th><th>Rate</th><th>VAT (£)</th><th>Ref</th><th>Receipt</th></tr></thead>
             <tbody id="vat-detail-body"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- FINANCIALS -->
+    <!-- FINANCIALS PANEL -->
     <div class="panel" id="panel-financials">
       <div class="summary-grid" id="fin-summary-cards"></div>
       <div class="form-card">
@@ -561,7 +610,7 @@ tbody td{padding:9px 12px;vertical-align:middle;}
       </div>
     </div>
 
-    <!-- STAFF -->
+    <!-- STAFF PANEL -->
     <div class="panel" id="panel-staff">
       <div class="form-card">
         <div class="form-card-title">Add Staff Member</div>
@@ -588,11 +637,13 @@ tbody td{padding:9px 12px;vertical-align:middle;}
   </div>
 </div>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img" src="" alt="Receipt">
   <button class="lightbox-close" onclick="closeLightbox()">Close</button>
 </div>
 
+<!-- EDIT STAFF MODAL -->
 <div class="modal-overlay" id="edit-modal">
   <div class="modal-box">
     <div class="modal-title">Edit Staff Member</div>
@@ -613,26 +664,31 @@ tbody td{padding:9px 12px;vertical-align:middle;}
 </div>
 
 <div id="toast"></div>
-
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
+/* ══════════ CONFIG ══════════ */
 const GDRIVE_CLIENT_ID='737294901316-164o32a3vvmc569ttt9g3v0l03gi4gh3.apps.googleusercontent.com';
 const GDRIVE_FOLDER_ID='1RLC85m_YTAd7zcdATmoWcFSggTLz2eLv';
 const GDRIVE_SCOPE='https://www.googleapis.com/auth/drive.file';
 const DATA_FILENAME='goldcrest_data.json';
-let entries=[],staff=[],nextId=1,activeProp='ALL';
-let driveToken=null,dataFileId=null,pendingFile=null,saveTimer=null;
-const SK_E='gc4_entries',SK_S='gc4_staff',SK_ID='gc4_nid',SK_TOK='gc4_tok',SK_FID='gc4_fid';
 
+/* ══════════ STATE ══════════ */
+let entries=[],staff=[],suppliers=[],nextId=1,activeProp='ALL';
+let driveToken=null,dataFileId=null,pendingFile=null,saveTimer=null;
+const SK_E='gc5_entries',SK_S='gc5_staff',SK_SUP='gc5_suppliers',SK_ID='gc5_nid',SK_TOK='gc5_tok',SK_FID='gc5_fid';
+
+/* ══════════ STORAGE ══════════ */
 function saveLocal(){
   localStorage.setItem(SK_E,JSON.stringify(entries));
   localStorage.setItem(SK_S,JSON.stringify(staff));
+  localStorage.setItem(SK_SUP,JSON.stringify(suppliers));
   localStorage.setItem(SK_ID,nextId);
   if(dataFileId) localStorage.setItem(SK_FID,dataFileId);
 }
 function loadLocal(){
   try{entries=JSON.parse(localStorage.getItem(SK_E))||[];}catch{entries=[];}
   try{staff=JSON.parse(localStorage.getItem(SK_S))||[];}catch{staff=[];}
+  try{suppliers=JSON.parse(localStorage.getItem(SK_SUP))||[];}catch{suppliers=[];}
   nextId=parseInt(localStorage.getItem(SK_ID))||1;
   driveToken=localStorage.getItem(SK_TOK)||null;
   dataFileId=localStorage.getItem(SK_FID)||null;
@@ -642,6 +698,7 @@ function loadLocal(){
   }
 }
 
+/* ══════════ DRIVE AUTH ══════════ */
 function handleDriveAuth(){
   if(driveToken){signOutDrive();return;}
   setDriveStatus('connecting','Connecting...');
@@ -649,14 +706,12 @@ function handleDriveAuth(){
     client_id:GDRIVE_CLIENT_ID,scope:GDRIVE_SCOPE,
     callback:async(resp)=>{
       if(resp.error){setDriveStatus('disconnected','Connect Drive');toast('Drive auth failed: '+resp.error);return;}
-      driveToken=resp.access_token;
-      localStorage.setItem(SK_TOK,driveToken);
+      driveToken=resp.access_token;localStorage.setItem(SK_TOK,driveToken);
       setDriveStatus('connected','Drive Connected');
       document.getElementById('sync-btn').style.display='inline-flex';
       document.getElementById('drive-warning').style.display='none';
       toast('Google Drive connected — syncing...');
-      await syncFromDrive();
-      updateDriveSidebar();
+      await syncFromDrive();updateDriveSidebar();
     }
   });
   client.requestAccessToken();
@@ -685,6 +740,7 @@ function updateDriveSidebar(){
   }
 }
 
+/* ══════════ DRIVE SYNC ══════════ */
 async function findDataFile(){
   if(!driveToken)return null;
   try{
@@ -707,6 +763,7 @@ async function syncFromDrive(){
         const d=await res.json();
         if(d.entries)entries=d.entries;
         if(d.staff)staff=d.staff;
+        if(d.suppliers)suppliers=d.suppliers;
         if(d.nextId)nextId=d.nextId;
         saveLocal();refreshAllUI();toast('Data synced from Drive');
       }
@@ -718,15 +775,14 @@ async function syncFromDrive(){
 }
 async function saveToDrive(){
   if(!driveToken)return;
-  const payload=JSON.stringify({entries,staff,nextId,savedAt:new Date().toISOString()});
+  const payload=JSON.stringify({entries,staff,suppliers,nextId,savedAt:new Date().toISOString()});
   const blob=new Blob([payload],{type:'application/json'});
   if(dataFileId){
     const res=await fetch(`https://www.googleapis.com/upload/drive/v3/files/${dataFileId}?uploadType=media`,{method:'PATCH',headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},body:blob});
     if(res.status===401)handleTokenExpiry();
   } else {
     const meta={name:DATA_FILENAME,parents:[GDRIVE_FOLDER_ID],mimeType:'application/json'};
-    const boundary='gc_b_'+Date.now();
-    const enc=new TextEncoder();
+    const boundary='gc_b_'+Date.now(),enc=new TextEncoder();
     const metaPart=enc.encode(`--${boundary}\r\nContent-Type: application/json\r\n\r\n${JSON.stringify(meta)}\r\n--${boundary}\r\nContent-Type: application/json\r\n\r\n`);
     const dataPart=enc.encode(payload);
     const closing=enc.encode(`\r\n--${boundary}--`);
@@ -739,20 +795,19 @@ async function saveToDrive(){
 }
 function scheduleDriveSave(){
   saveLocal();if(!driveToken)return;
-  clearTimeout(saveTimer);
-  setDriveStatus('syncing','Saving...');
+  clearTimeout(saveTimer);setDriveStatus('syncing','Saving...');
   saveTimer=setTimeout(async()=>{await saveToDrive();setDriveStatus('connected','Drive Connected');updateDriveSidebar();},2000);
 }
 function handleTokenExpiry(){driveToken=null;localStorage.removeItem(SK_TOK);setDriveStatus('disconnected','Connect Drive');toast('Drive session expired — please reconnect');}
 function showSyncBar(){document.getElementById('sync-bar').classList.add('show');}
 function hideSyncBar(){document.getElementById('sync-bar').classList.remove('show');}
 
+/* ══════════ RECEIPT UPLOAD ══════════ */
 async function uploadToDrive(file,filename){
   if(!driveToken)return null;
   showUploadProgress(0,'Preparing...');
   const meta={name:filename,parents:[GDRIVE_FOLDER_ID],mimeType:file.type||'image/jpeg'};
-  const boundary='gc_r_'+Date.now();
-  const enc=new TextEncoder();
+  const boundary='gc_r_'+Date.now(),enc=new TextEncoder();
   const arrayBuf=await file.arrayBuffer();
   const metaPart=enc.encode(`--${boundary}\r\nContent-Type: application/json\r\n\r\n${JSON.stringify(meta)}\r\n--${boundary}\r\nContent-Type: ${file.type||'image/jpeg'}\r\n\r\n`);
   const closing=enc.encode(`\r\n--${boundary}--`);
@@ -766,7 +821,7 @@ async function uploadToDrive(file,filename){
     showUploadProgress(90,'Finalising...');
     await fetch(`https://www.googleapis.com/drive/v3/files/${d.id}/permissions`,{method:'POST',headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},body:JSON.stringify({role:'reader',type:'anyone'})});
     showUploadProgress(100,'Done ✓');setTimeout(hideUploadProgress,1200);
-    return{fileId:d.id,fileName:d.name,viewLink:`https://drive.google.com/file/d/${d.id}/view`,thumbLink:`https://drive.google.com/thumbnail?id=${d.id}&sz=w400`};
+    return{fileId:d.id,fileName:d.name,viewLink:`https://drive.google.com/file/d/${d.id}/view`};
   }catch{hideUploadProgress();return null;}
 }
 function showUploadProgress(pct,label){
@@ -775,7 +830,6 @@ function showUploadProgress(pct,label){
   document.getElementById('upload-label').textContent=label;
 }
 function hideUploadProgress(){document.getElementById('upload-progress').style.display='none';document.getElementById('upload-bar').style.width='0%';}
-
 function handleFileSelect(evt){
   const file=evt.target.files[0];if(!file)return;
   if(file.size>10*1024*1024){toast('File too large — max 10MB');return;}
@@ -806,6 +860,57 @@ function onDrop(e){
 function openLightbox(src){document.getElementById('lightbox-img').src=src;document.getElementById('lightbox').classList.add('open');}
 function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
 
+/* ══════════ SUPPLIER MANAGEMENT ══════════ */
+function populateSupplierDropdown(){
+  const sel=document.getElementById('f-supplier-select');
+  const cur=sel.value;
+  sel.innerHTML='<option value="">— Select or add new —</option>'+
+    suppliers.sort().map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('')+
+    '<option value="__new__">+ Add new supplier...</option>';
+  if(cur&&cur!=='__new__') sel.value=cur;
+}
+function onSupplierSelect(){
+  const val=document.getElementById('f-supplier-select').value;
+  const newRow=document.getElementById('supplier-new-row');
+  if(val==='__new__'){
+    newRow.classList.add('show');
+    document.getElementById('f-supplier-new').focus();
+  } else {
+    newRow.classList.remove('show');
+  }
+}
+function addSupplierFromField(){
+  const name=document.getElementById('f-supplier-new').value.trim();
+  if(!name){toast('Enter a supplier name');return;}
+  if(!suppliers.includes(name)){
+    suppliers.push(name);
+    scheduleDriveSave();
+    populateSupplierDropdown();
+    populateSupplierFilter();
+  }
+  document.getElementById('f-supplier-select').value=name;
+  document.getElementById('f-supplier-new').value='';
+  document.getElementById('supplier-new-row').classList.remove('show');
+  toast('Supplier "'+name+'" added');
+}
+function cancelNewSupplier(){
+  document.getElementById('f-supplier-new').value='';
+  document.getElementById('supplier-new-row').classList.remove('show');
+  document.getElementById('f-supplier-select').value='';
+}
+function getSelectedSupplier(){
+  const val=document.getElementById('f-supplier-select').value;
+  return(val&&val!=='__new__')?val:'';
+}
+function populateSupplierFilter(){
+  const sel=document.getElementById('fil-supplier');
+  const cur=sel.value;
+  // Build from entries too (historical)
+  const all=[...new Set([...suppliers,...entries.map(e=>e.supplier||'').filter(Boolean)])].sort();
+  sel.innerHTML='<option value="">All Suppliers</option>'+all.map(s=>`<option value="${esc(s)}"${s===cur?' selected':''}>${esc(s)}</option>`).join('');
+}
+
+/* ══════════ VAT CALC ══════════ */
 function onTypeChange(){
   const t=document.getElementById('f-type').value;
   document.getElementById('vat-section').style.display=t==='Expense'?'block':'none';
@@ -827,16 +932,26 @@ function onNetChange(){
 }
 function getVatLabel(v){return{'20':'20%','5':'5%','0':'0%','exempt':'Exempt','manual':'Manual'}[v]||v;}
 
+/* ══════════ ADD ENTRY ══════════ */
 function today(){return new Date().toISOString().slice(0,10);}
 
 async function addEntry(){
-  const date=document.getElementById('f-date').value;
+  const txdate=document.getElementById('f-txdate').value;
   const desc=document.getElementById('f-desc').value.trim();
-  if(!date){toast('Select a date');return;}
+  if(!txdate){toast('Select a transaction date');return;}
   if(!desc){toast('Add a description');return;}
+  const supplier=getSelectedSupplier();
   const type=document.getElementById('f-type').value;
   const btn=document.getElementById('save-btn');
   btn.disabled=true;btn.textContent='Saving...';
+
+  // Auto-add supplier to list if new
+  if(supplier&&!suppliers.includes(supplier)){
+    suppliers.push(supplier);
+    populateSupplierDropdown();
+    populateSupplierFilter();
+  }
+
   let receiptData=null;
   if(pendingFile){
     if(driveToken){
@@ -847,8 +962,13 @@ async function addEntry(){
       receiptData=await fileToBase64(pendingFile);
     }
   }
+
   entries.unshift({
-    id:nextId++,date,
+    id:nextId++,
+    txdate,                                          // Transaction date (HMRC date)
+    entrydate:today(),                               // When it was logged
+    invoicedate:document.getElementById('f-invoicedate').value||txdate, // Date on document
+    supplier,
     staff:document.getElementById('f-staff').value,
     prop:document.getElementById('f-prop').value,
     type,cat:document.getElementById('f-cat').value,
@@ -864,67 +984,82 @@ async function addEntry(){
     receiptViewLink:receiptData?.viewLink||null,
     receiptLocal:(typeof receiptData==='string')?receiptData:null
   });
+
   scheduleDriveSave();pendingFile=null;clearForm();renderLog();updateSidebar();
   btn.disabled=false;btn.textContent='+ Add Entry';
   toast('Entry saved'+(receiptData?.fileId?' — receipt synced to Drive':receiptData?' — receipt saved locally':''));
 }
+
 function fileToBase64(file){return new Promise(res=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.readAsDataURL(file);});}
+
 function clearForm(){
-  ['f-amount','f-net','f-vat','f-mins','f-evref','f-desc'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('f-date').value=today();
+  ['f-amount','f-net','f-vat','f-mins','f-evref','f-desc','f-invoicedate'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-txdate').value=today();
+  document.getElementById('f-entrydate').value=today();
   document.getElementById('f-type').value='Expense';
   document.getElementById('f-vatrate').value='20';
   document.getElementById('f-amount').style.borderColor='';
   document.getElementById('vat-section').style.display='block';
+  document.getElementById('f-supplier-select').value='';
+  document.getElementById('supplier-new-row').classList.remove('show');
   pendingFile=null;clearReceiptPreview('receipt-preview-form');
   document.getElementById('drive-file-link').innerHTML='';hideUploadProgress();
 }
+
 function deleteEntry(id){
   if(!confirm('Delete this entry?'))return;
   entries=entries.filter(e=>e.id!==id);
   scheduleDriveSave();renderLog();updateSidebar();toast('Deleted');
 }
 
+/* ══════════ RENDER LOG ══════════ */
 function renderLog(){
   const month=document.getElementById('fil-month').value;
   const fType=document.getElementById('fil-type').value;
   const fCat=document.getElementById('fil-cat').value;
+  const fSup=document.getElementById('fil-supplier').value;
   let fil=entries.filter(e=>{
     if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp))return false;
-    if(month&&!e.date.startsWith(month))return false;
+    // Filter by transaction date month
+    const dateKey=e.txdate||e.date||'';
+    if(month&&!dateKey.startsWith(month))return false;
     if(fType&&e.type!==fType)return false;
     if(fCat&&e.cat!==fCat)return false;
+    if(fSup&&(e.supplier||'')!==fSup)return false;
     return true;
   });
   document.getElementById('drive-warning').style.display=driveToken?'none':'block';
   const tb=document.getElementById('log-body');
-  if(!fil.length){tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">📋</div><p>No entries found.</p></div></td></tr>`;return;}
+  if(!fil.length){tb.innerHTML=`<tr><td colspan="12"><div class="empty-state"><div class="icon">📋</div><p>No entries found.</p></div></td></tr>`;return;}
   tb.innerHTML=fil.map(e=>{
     let rc='<span style="color:var(--text-light);font-size:11px;">—</span>';
     if(e.receiptViewLink)rc=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️ Drive</a>`;
     else if(e.receiptLocal)rc=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷 View</button>`;
     const vd=e.type==='Expense'&&e.vatAmt>0?`<span class="badge badge-vat">£${e.vatAmt.toFixed(2)}</span>`:`<span style="color:var(--text-light);font-size:11px;">${e.type==='Expense'?'Exempt':'—'}</span>`;
+    const txd=e.txdate||e.date||'';
+    const logged=e.entrydate&&e.entrydate!==txd?`<span class="date-logged">Logged: ${fmtDate(e.entrydate)}</span>`:'';
     return`<tr>
-      <td style="white-space:nowrap;">${fmtDate(e.date)}</td>
+      <td><div class="date-cell"><span class="date-main">${fmtDate(txd)}</span>${logged}</div></td>
+      <td class="supplier-cell">${esc(e.supplier||'—')}</td>
       <td>${esc(e.staff)}</td>
       <td style="font-size:11px;">${esc(e.prop)}</td>
       <td><span class="badge ${e.type==='Income'?'badge-income':'badge-expense'}">${e.type}</span></td>
       <td><span class="badge badge-cat">${esc(e.cat)}</span></td>
-      <td style="max-width:190px;font-size:12px;color:var(--text-mid);">${esc(e.desc)}</td>
+      <td style="max-width:180px;font-size:12px;color:var(--text-mid);">${esc(e.desc)}</td>
       <td class="${e.type==='Income'?'amount-income':'amount-expense'}" style="white-space:nowrap;">${e.type==='Income'?'+':'-'}£${(e.amount||0).toFixed(2)}</td>
       <td>${vd}</td><td>${rc}</td>
       <td style="font-size:11px;color:var(--text-light);">${esc(e.evref||'')}</td>
       <td><button class="delete-btn" onclick="deleteEntry(${e.id})">✕</button></td>
     </tr>`;
   }).join('');
-  populateCatFilter();
+  populateCatFilter();populateSupplierFilter();
 }
 function populateCatFilter(){
   const sel=document.getElementById('fil-cat');const cur=sel.value;
   const cats=[...new Set(entries.map(e=>e.cat))].sort();
   sel.innerHTML='<option value="">All Categories</option>'+cats.map(c=>`<option value="${c}"${c===cur?' selected':''}>${c}</option>`).join('');
 }
-function clearFilters(){['fil-month','fil-type','fil-cat'].forEach(id=>document.getElementById(id).value='');renderLog();}
+function clearFilters(){['fil-month','fil-type','fil-cat','fil-supplier'].forEach(id=>document.getElementById(id).value='');renderLog();}
 function filterProp(prop){
   activeProp=prop;
   document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('active'));
@@ -934,7 +1069,10 @@ function filterProp(prop){
 }
 function updateSidebar(){
   const month=new Date().toISOString().slice(0,7);
-  const fil=entries.filter(e=>{if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp))return false;return e.date.startsWith(month);});
+  const fil=entries.filter(e=>{
+    if(activeProp!=='ALL'&&!e.prop.startsWith(activeProp))return false;
+    return(e.txdate||e.date||'').startsWith(month);
+  });
   const inc=fil.filter(e=>e.type==='Income').reduce((a,e)=>a+(e.amount||0),0);
   const exp=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.amount||0),0);
   const vat=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -947,15 +1085,21 @@ function updateSidebar(){
   document.getElementById('sb-vat').textContent='£'+vat.toFixed(2);
 }
 
-function quarterOf(d){const m=parseInt(d.slice(5,7));return m<=3?'Q1':m<=6?'Q2':m<=9?'Q3':'Q4';}
+/* ══════════ VAT PANEL ══════════ */
+function quarterOf(d){const m=parseInt((d||'').slice(5,7));return m<=3?'Q1':m<=6?'Q2':m<=9?'Q3':'Q4';}
 function quarterMonths(q){return{Q1:[1,2,3],Q2:[4,5,6],Q3:[7,8,9],Q4:[10,11,12]}[q];}
 function renderVat(){
   const year=parseInt(document.getElementById('vat-year').value)||new Date().getFullYear();
   const fp=document.getElementById('vat-prop').value;
-  const ve=entries.filter(e=>e.date.startsWith(String(year))&&(!fp||e.prop.startsWith(fp))&&e.type==='Expense'&&(e.vatAmt||0)>0);
+  // VAT filtered by TRANSACTION date
+  const ve=entries.filter(e=>{
+    const d=e.txdate||e.date||'';
+    return d.startsWith(String(year))&&(!fp||e.prop.startsWith(fp))&&e.type==='Expense'&&(e.vatAmt||0)>0;
+  });
   const ends={Q1:'31 Mar',Q2:'30 Jun',Q3:'30 Sep',Q4:'31 Dec'};
   document.getElementById('vat-quarter-cards').innerHTML=['Q1','Q2','Q3','Q4'].map(q=>{
-    const ms=quarterMonths(q);const qe=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7))));
+    const ms=quarterMonths(q);
+    const qe=ve.filter(e=>ms.includes(parseInt((e.txdate||e.date||'').slice(5,7))));
     const gross=qe.reduce((a,e)=>a+(e.amount||0),0);
     const net=qe.reduce((a,e)=>a+(e.netAmt||0),0);
     const vat=qe.reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -969,17 +1113,20 @@ function renderVat(){
     </div>`;
   }).join('');
   const tb=document.getElementById('vat-detail-body');
-  if(!ve.length){tb.innerHTML=`<tr><td colspan="11"><div class="empty-state"><div class="icon">🧾</div><p>No VAT entries for ${year}.</p></div></td></tr>`;return;}
-  tb.innerHTML=[...ve].sort((a,b)=>a.date.localeCompare(b.date)).map(e=>{
+  if(!ve.length){tb.innerHTML=`<tr><td colspan="13"><div class="empty-state"><div class="icon">🧾</div><p>No VAT entries for ${year}.</p></div></td></tr>`;return;}
+  tb.innerHTML=[...ve].sort((a,b)=>(a.txdate||a.date||'').localeCompare(b.txdate||b.date||'')).map(e=>{
     let rc='—';
     if(e.receiptViewLink)rc=`<a href="${e.receiptViewLink}" target="_blank" class="thumb-btn has-img">☁️</a>`;
     else if(e.receiptLocal)rc=`<button class="thumb-btn has-img" onclick="openLightbox(entries.find(x=>x.id==${e.id}).receiptLocal)">📷</button>`;
+    const txd=e.txdate||e.date||'';
     return`<tr>
-      <td style="white-space:nowrap;">${fmtDate(e.date)}</td>
-      <td><span class="badge badge-vat">${quarterOf(e.date)}</span></td>
+      <td style="white-space:nowrap;">${fmtDate(txd)}</td>
+      <td style="font-size:11px;color:var(--text-light);white-space:nowrap;">${e.entrydate&&e.entrydate!==txd?fmtDate(e.entrydate):'—'}</td>
+      <td style="font-size:12px;font-weight:600;">${esc(e.supplier||'—')}</td>
+      <td><span class="badge badge-vat">${quarterOf(txd)}</span></td>
       <td style="font-size:11px;">${esc(e.prop)}</td>
       <td><span class="badge badge-cat">${esc(e.cat)}</span></td>
-      <td style="max-width:160px;font-size:12px;">${esc(e.desc)}</td>
+      <td style="max-width:150px;font-size:12px;">${esc(e.desc)}</td>
       <td class="amount-expense">£${(e.amount||0).toFixed(2)}</td>
       <td>£${(e.netAmt||0).toFixed(2)}</td>
       <td><span class="badge badge-vat">${getVatLabel(e.vatRate||'')}</span></td>
@@ -992,25 +1139,40 @@ function renderVat(){
 function exportVatCSV(period){
   const year=parseInt(document.getElementById('vat-year').value)||new Date().getFullYear();
   const fp=document.getElementById('vat-prop').value;
-  let ve=entries.filter(e=>e.date.startsWith(String(year))&&(!fp||e.prop.startsWith(fp))&&e.type==='Expense'&&(e.vatAmt||0)>0);
-  if(period!=='ALL'){const ms=quarterMonths(period);ve=ve.filter(e=>ms.includes(parseInt(e.date.slice(5,7))));}
-  ve=[...ve].sort((a,b)=>a.date.localeCompare(b.date));
+  let ve=entries.filter(e=>{
+    const d=e.txdate||e.date||'';
+    return d.startsWith(String(year))&&(!fp||e.prop.startsWith(fp))&&e.type==='Expense'&&(e.vatAmt||0)>0;
+  });
+  if(period!=='ALL'){const ms=quarterMonths(period);ve=ve.filter(e=>ms.includes(parseInt((e.txdate||e.date||'').slice(5,7))));}
+  ve=[...ve].sort((a,b)=>(a.txdate||a.date||'').localeCompare(b.txdate||b.date||''));
   const tG=ve.reduce((a,e)=>a+(e.amount||0),0),tN=ve.reduce((a,e)=>a+(e.netAmt||0),0),tV=ve.reduce((a,e)=>a+(e.vatAmt||0),0);
   const pl=period==='ALL'?`Full Year ${year}`:`${period} ${year}`;
-  const lines=[`GOLDCREST PROPERTY AND SERVICES LIMITED — VAT Return: ${pl}`,`Generated: ${new Date().toLocaleString('en-GB')}`,`Property: ${fp||'All Properties'}`,``,
-    `Date,Quarter,Property,Category,Description,Gross(£),Net ex-VAT(£),VAT Rate,VAT Amount(£),Invoice Ref,Receipt,Drive Link`,
-    ...ve.map(e=>[e.date,quarterOf(e.date),`"${e.prop}"`,`"${e.cat}"`,`"${(e.desc||'').replace(/"/g,'""')}"`,
-      (e.amount||0).toFixed(2),(e.netAmt||0).toFixed(2),getVatLabel(e.vatRate||''),(e.vatAmt||0).toFixed(2),
-      `"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',e.receiptViewLink||''].join(',')),
-    ``,`TOTALS,,,,,${tG.toFixed(2)},${tN.toFixed(2)},,${tV.toFixed(2)},,,`];
+  const lines=[
+    `GOLDCREST PROPERTY AND SERVICES LIMITED — VAT Return: ${pl}`,
+    `Generated: ${new Date().toLocaleString('en-GB')}`,
+    `Property: ${fp||'All Properties'}`,``,
+    `Transaction Date,Entry Date,Invoice Date,Supplier,Quarter,Property,Category,Description,Gross(£),Net ex-VAT(£),VAT Rate,VAT Amount(£),Invoice Ref,Receipt,Drive Link`,
+    ...ve.map(e=>{
+      const txd=e.txdate||e.date||'';
+      return[txd,e.entrydate||txd,e.invoicedate||txd,`"${e.supplier||''}"`,quarterOf(txd),`"${e.prop}"`,`"${e.cat}"`,
+        `"${(e.desc||'').replace(/"/g,'""')}"`,
+        (e.amount||0).toFixed(2),(e.netAmt||0).toFixed(2),getVatLabel(e.vatRate||''),(e.vatAmt||0).toFixed(2),
+        `"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',e.receiptViewLink||''].join(',');
+    }),
+    ``,`TOTALS,,,,,,,,${tG.toFixed(2)},${tN.toFixed(2)},,${tV.toFixed(2)},,,`
+  ];
   dlCSV(lines.join('\n'),`Goldcrest_VAT_${pl.replace(/ /g,'_')}_${today()}.csv`);
   toast(`VAT CSV — ${ve.length} transactions · £${tV.toFixed(2)} VAT`);
 }
 
+/* ══════════ FINANCIALS ══════════ */
 function renderFinancials(){
   const year=parseInt(document.getElementById('fin-year').value)||new Date().getFullYear();
   const fp=document.getElementById('fin-prop').value;
-  const fil=entries.filter(e=>e.date.startsWith(String(year))&&(!fp||e.prop.startsWith(fp)));
+  const fil=entries.filter(e=>{
+    const d=e.txdate||e.date||'';
+    return d.startsWith(String(year))&&(!fp||e.prop.startsWith(fp));
+  });
   const tI=fil.filter(e=>e.type==='Income').reduce((a,e)=>a+(e.amount||0),0);
   const tE=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.amount||0),0);
   const tV=fil.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -1025,7 +1187,7 @@ function renderFinancials(){
   let rows='';
   months.forEach((m,i)=>{
     const ms=`${year}-${String(i+1).padStart(2,'0')}`;
-    const me=fil.filter(e=>e.date.startsWith(ms));if(!me.length)return;
+    const me=fil.filter(e=>(e.txdate||e.date||'').startsWith(ms));if(!me.length)return;
     const inc=me.filter(e=>e.type==='Income').reduce((a,e)=>a+(e.amount||0),0);
     const exp=me.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.amount||0),0);
     const vat=me.filter(e=>e.type==='Expense').reduce((a,e)=>a+(e.vatAmt||0),0);
@@ -1038,13 +1200,17 @@ function renderFinancials(){
   document.getElementById('cat-body').innerHTML=Object.values(catMap).sort((a,b)=>b.total-a.total).map(c=>`<tr><td>${esc(c.cat)}</td><td><span class="badge ${c.type==='Income'?'badge-income':'badge-expense'}">${c.type}</span></td><td class="${c.type==='Income'?'amount-income':'amount-expense'}">£${c.total.toFixed(2)}</td><td style="color:var(--purple);">£${c.vat.toFixed(2)}</td><td style="text-align:center;">${c.count}</td></tr>`).join('')||`<tr><td colspan="5"><div class="empty-state"><p>No data.</p></div></td></tr>`;
 }
 
+/* ══════════ EXPORT CSV ══════════ */
 function exportCSV(){
   const hdr=['GOLDCREST PROPERTY AND SERVICES LIMITED — Operations Log','Exported: '+new Date().toLocaleString('en-GB'),'',
-    ['Date','Staff','Property','Type','Category','Description','Gross(£)','Net(£)','VAT Rate','VAT(£)','Mins','Ref','Receipt','Drive Link'].join(',')];
-  const rows=[...entries].sort((a,b)=>a.date.localeCompare(b.date)).map(e=>
-    [e.date,`"${e.staff}"`,`"${e.prop}"`,e.type,`"${e.cat}"`,`"${(e.desc||'').replace(/"/g,'""')}"`,
-     (e.amount||0).toFixed(2),(e.netAmt||0).toFixed(2),getVatLabel(e.vatRate||''),(e.vatAmt||0).toFixed(2),
-     e.mins||0,`"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',e.receiptViewLink||''].join(','));
+    ['Transaction Date','Entry Date','Invoice Date','Supplier','Staff','Property','Type','Category','Description','Gross(£)','Net(£)','VAT Rate','VAT(£)','Mins','Ref','Receipt','Drive Link'].join(',')];
+  const rows=[...entries].sort((a,b)=>(a.txdate||a.date||'').localeCompare(b.txdate||b.date||'')).map(e=>{
+    const txd=e.txdate||e.date||'';
+    return[txd,e.entrydate||txd,e.invoicedate||txd,`"${e.supplier||''}"`,`"${e.staff}"`,`"${e.prop}"`,e.type,`"${e.cat}"`,
+      `"${(e.desc||'').replace(/"/g,'""')}"`,
+      (e.amount||0).toFixed(2),(e.netAmt||0).toFixed(2),getVatLabel(e.vatRate||''),(e.vatAmt||0).toFixed(2),
+      e.mins||0,`"${e.evref||''}"`,e.receiptFileId?'YES (Drive)':e.receiptLocal?'YES (Local)':'NO',e.receiptViewLink||''].join(',');
+  });
   dlCSV([...hdr,...rows].join('\n'),'Goldcrest_Operations_Log_'+today()+'.csv');toast('CSV exported');
 }
 function dlCSV(content,filename){
@@ -1052,6 +1218,7 @@ function dlCSV(content,filename){
   const a=document.createElement('a');a.href=u;a.download=filename;a.click();URL.revokeObjectURL(u);
 }
 
+/* ══════════ TIMER ══════════ */
 let tI=null,tS=null,tE=null,tEl=0;
 function pad(n){return String(n).padStart(2,'0');}
 function fmtEl(ms){const s=Math.floor(ms/1000);return`${pad(Math.floor(s/3600))}:${pad(Math.floor((s%3600)/60))}:${pad(s%60)}`;}
@@ -1087,12 +1254,12 @@ function resetTimer(){
 }
 function saveTimerEntry(){
   if(!tS||!tE){toast('No completed session');return;}
-  const desc=document.getElementById('t-desc').value.trim();
-  if(!desc){toast('Add a description');return;}
+  const desc=document.getElementById('t-desc').value.trim();if(!desc){toast('Add a description');return;}
   const mins=Math.round((tE-tS)/60000);
   const rate=parseFloat(document.getElementById('t-rate').value)||35;
   const fee=parseFloat(((mins/60)*rate).toFixed(2));
-  entries.unshift({id:nextId++,date:tS.toISOString().slice(0,10),
+  const d=tS.toISOString().slice(0,10);
+  entries.unshift({id:nextId++,txdate:d,entrydate:d,invoicedate:d,supplier:'',
     staff:document.getElementById('t-staff').value,prop:document.getElementById('t-prop').value,
     type:'Expense',cat:document.getElementById('t-cat').value,
     amount:fee,netAmt:fee,vatAmt:0,vatRate:'exempt',mins,
@@ -1103,6 +1270,7 @@ function saveTimerEntry(){
   toast('Session saved — '+mins+' mins / £'+fee.toFixed(2));
 }
 
+/* ══════════ STAFF ══════════ */
 function populateStaffDropdowns(){
   ['f-staff','t-staff'].forEach(id=>{
     const sel=document.getElementById(id);if(!sel)return;
@@ -1119,8 +1287,7 @@ function addStaff(){
   if(staff.find(s=>s.name.toLowerCase()===name.toLowerCase())){toast('Already exists');return;}
   staff.push({id:Math.max(0,...staff.map(s=>s.id))+1,name,role});
   scheduleDriveSave();populateStaffDropdowns();renderStaffPanel();
-  document.getElementById('s-name').value='';document.getElementById('s-role').value='';
-  toast(name+' added');
+  document.getElementById('s-name').value='';document.getElementById('s-role').value='';toast(name+' added');
 }
 function openEditModal(id){
   const s=staff.find(x=>x.id===id);if(!s)return;
@@ -1158,6 +1325,7 @@ function renderStaffPanel(){
     </div>`).join(''):'<div class="empty-state"><p>No staff added yet.</p></div>';
 }
 
+/* ══════════ YEAR DROPDOWNS ══════════ */
 function populateYearDropdowns(){
   const cur=new Date().getFullYear();
   ['fin-year','vat-year'].forEach(id=>{
@@ -1165,6 +1333,8 @@ function populateYearDropdowns(){
     for(let y=cur+1;y>=2022;y--){const o=document.createElement('option');o.value=y;o.textContent=y;if(y===cur)o.selected=true;sel.appendChild(o);}
   });
 }
+
+/* ══════════ TABS ══════════ */
 function switchTab(tab,btn){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
@@ -1173,8 +1343,9 @@ function switchTab(tab,btn){
   if(tab==='vat')renderVat();
   if(tab==='staff')renderStaffPanel();
 }
-function refreshAllUI(){populateStaffDropdowns();renderLog();updateSidebar();}
+function refreshAllUI(){populateStaffDropdowns();populateSupplierDropdown();populateSupplierFilter();renderLog();updateSidebar();}
 
+/* ══════════ UTILS ══════════ */
 function tick(){
   const n=new Date();
   document.getElementById('clock-time').textContent=n.toLocaleTimeString('en-GB');
@@ -1190,10 +1361,16 @@ function toast(msg){
   setTimeout(()=>t.classList.remove('show'),3200);
 }
 
+/* ══════════ INIT ══════════ */
 loadLocal();
 setInterval(tick,1000);tick();
-document.getElementById('f-date').value=today();
-populateStaffDropdowns();populateYearDropdowns();renderLog();updateSidebar();updateDriveSidebar();
+document.getElementById('f-txdate').value=today();
+document.getElementById('f-entrydate').value=today();
+populateStaffDropdowns();
+populateSupplierDropdown();
+populateSupplierFilter();
+populateYearDropdowns();
+renderLog();updateSidebar();updateDriveSidebar();
 if(driveToken){
   setDriveStatus('connected','Drive Connected');
   document.getElementById('sync-btn').style.display='inline-flex';
